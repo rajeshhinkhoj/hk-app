@@ -27,81 +27,38 @@ public class ConfigureActivity extends Activity {
 	protected boolean mbActive;
 	public ProgressBar mProgressBar;
 	public TextView configureMsgTv=null;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.configure_offline_dictionary);
-		Button cancelBtn=(Button)findViewById(R.id.cancelButton);
-		if(AppConstants.IN_APP_BILLING_TEST)
-		{
-			AppAccountManager.setAdsStatus(this, false);
-		}
-		cancelBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				onFinishConfigure();
-			}
-		});
 		try
-		{
-			DictCommon.initializeSettings(this);
-			configureMsgTv= (TextView)findViewById(R.id.configuration_message);
-			configureMsgTv.setVisibility(View.GONE);
-
-			new IniatializeConfigTaskAsync(this).execute(new Void[]{});
-		}
-		catch(Exception e)
-		{
-			Toast.makeText(this, "Error loading configuration.Please report issue to info@hinkhoj.com", Toast.LENGTH_LONG).show();
-		}
-	}
-
-
-	public void startConfigure()
-	{
-		try
-		{
-			
-			//check if offline db comfigured.
-			String downloadFilePath=OfflineDatabaseFileManager.GetZipFilePath();
-			File downloadFile=new File(downloadFilePath);
-			boolean offlineDbConfigured=false;			
-			//else if(downloadFile.exists() && !OfflineDatabaseSetupManager.IsDictionaryUnCompressed())
-			if(!OfflineDatabaseSetupManager.IsDictionaryUnCompressed())
+		{	
+			if(OfflineDatabaseSetupManager.IsDictionaryUnCompressed())
 			{
-				offlineDbConfigured=false;
+				onFinishConfigure();
 			}
 			else
 			{
-				offlineDbConfigured=true;
-				//dbHelper= new SqliteDBHelper(this);
-				DictCommon.IsOfflineDbAvailable=true;
-				DictCommon.setupOfflineDb();
-			}
+				setContentView(R.layout.configure_offline_dictionary);
+				Button cancelBtn=(Button)findViewById(R.id.cancelButton);
+				if(AppConstants.IN_APP_BILLING_TEST)
+				{
+					AppAccountManager.setAdsStatus(this, false);
+				}
+				cancelBtn.setOnClickListener(new OnClickListener() {
 
-			if(!offlineDbConfigured)
-			{
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						onFinishConfigure();
+					}
+				});
+				configureMsgTv= (TextView)findViewById(R.id.configuration_message);
 				configureMsgTv.setVisibility(View.VISIBLE);
 				mProgressBar = (ProgressBar)findViewById(R.id.progressBar);
 				mProgressBar.setMax(100);
 				mProgressBar.setProgress(0);
-				OfflineDatabaseFileManager.MoveOldFiles(2);
+				OfflineDatabaseFileManager.MoveOldFiles(3);
 				new ConfigureTaskAsync(this).execute(new Void[]{});
-			}	
-			else
-			{
-				onFinishConfigure();
-			}
-
-
-			String hmDatabaseFilePath=OfflineDatabaseFileManager.GetHMSqlLiteDatabaseFilePath();
-			File hmDbFile= new File(hmDatabaseFilePath);
-			if(!hmDbFile.exists())
-			{	
-				new HangmanBGConfigureTaskAsync(this).execute(new Void[]{});
 			}
 		}
 		catch(Exception e)
@@ -110,7 +67,6 @@ public class ConfigureActivity extends Activity {
 		}
 
 	}
-
 
 	@Override
 	protected void onPause() {

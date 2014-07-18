@@ -47,7 +47,9 @@ public class WordDetailsActivity extends CommonBaseActivity implements OnWordSel
 
 			DictCommon.setupDatabase(this);      
 			this.t2sHandler= new Text2SpeechHandler(this);
+			
 			DictCommon.InitializeAds(this, R.id.ad);
+			DictCommon.AddTrackEvent(this);
 		}
 		catch(Exception e)
 		{

@@ -29,7 +29,7 @@ public class DefinitionFragment extends Fragment  {
 	private TextView main_tv=null;
 	private TextView meaning_tv=null;
 	private boolean isPageLoaded=false;
-	
+
 	private OnWordSelectedFromSearchSuccess mCallBack;
 
 	@Override
@@ -58,16 +58,16 @@ public class DefinitionFragment extends Fragment  {
 		refreshView();
 		return view;
 	}
-	
 
-	   @Override
-		public void setUserVisibleHint(boolean isVisibleToUser) {
-			super.setUserVisibleHint(isVisibleToUser);
-			if(view!=null)
-			{
-				refreshView();
-			}
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		if(view!=null)
+		{
+			refreshView();
 		}
+	}
 
 	public static DefinitionFragment newInstance(int position) {
 		DefinitionFragment f = new DefinitionFragment();
@@ -86,43 +86,43 @@ public class DefinitionFragment extends Fragment  {
 
 
 			isHindi=drd.IsHindi;
-			
+
 			if(!drd.IsHindi)
 			{
-		
-					if(drd.eng2eng_list!=null && drd.eng2eng_list.size()>0)
-					{
-						List<String> defMeaning=new ArrayList<String>(drd.eng2eng_list.size());
-						for(DictionaryWordData dwd: drd.eng2eng_list)
-						{
-							defMeaning.add(dwd.hin_word);
-						}
-						showDefinition(defMeaning);	 
-					}
-					else
-					{
-						message_tv.setVisibility(View.VISIBLE);
-					}
 
-				
+				if(drd.eng2eng_list!=null && drd.eng2eng_list.size()>0)
+				{
+					List<String> defMeaning=new ArrayList<String>(drd.eng2eng_list.size());
+					for(DictionaryWordData dwd: drd.eng2eng_list)
+					{
+						defMeaning.add(dwd.hin_word);
+					}
+					showDefinition(defMeaning);	 
+				}
+				else
+				{
+					message_tv.setVisibility(View.VISIBLE);
+				}
+
+
 			}
 			else
 			{
-					if(drd.hin2hin_list!=null && drd.hin2hin_list.size()>0)
+				if(drd.hin2hin_list!=null && drd.hin2hin_list.size()>0)
+				{
+					List<String> defMeaning=new ArrayList<String>(drd.hin2hin_list.size());
+					for(DictionaryWordData dwd: drd.hin2hin_list)
 					{
-						List<String> defMeaning=new ArrayList<String>(drd.hin2hin_list.size());
-						for(DictionaryWordData dwd: drd.hin2hin_list)
-						{
-							defMeaning.add(dwd.eng_word);
-						}
-						showDefinition(defMeaning);	 
+						defMeaning.add(dwd.eng_word);
 					}
-					else
-					{
-						message_tv.setVisibility(View.VISIBLE);
-					}
+					showDefinition(defMeaning);	 
+				}
+				else
+				{
+					message_tv.setVisibility(View.VISIBLE);
+				}
 
-				
+
 			}	
 
 		}
@@ -141,9 +141,7 @@ public class DefinitionFragment extends Fragment  {
 	{
 		ListView lv = (ListView)view.findViewById(R.id.definition_list);
 		lv.setAdapter(new WordDetailAdapter(view.getContext(), R.layout.simple_list_item,listItems));
-		//lv.setExpanded(true);
-		TextView heading=(TextView)view.findViewById(R.id.definition);
-		heading.setVisibility(View.VISIBLE);
+
 		lv.setVisibility(View.VISIBLE);
 		lv.setDivider(getResources().getDrawable(R.drawable.list_divider));
 		//Utils.updateListViewHeight(lv);
@@ -154,9 +152,7 @@ public class DefinitionFragment extends Fragment  {
 	private void resetDefinition()
 	{
 		ListView listView = (ListView)view.findViewById(R.id.definition_list);
-		TextView heading=(TextView)view.findViewById(R.id.definition);
 		listView.setVisibility(View.GONE);
-		heading.setVisibility(View.GONE);
 		TextView message_tv=(TextView)view.findViewById(R.id.message_tv);
 		message_tv.setVisibility(View.GONE);
 	}

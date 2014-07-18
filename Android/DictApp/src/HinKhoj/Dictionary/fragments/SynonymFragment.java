@@ -118,9 +118,6 @@ public class SynonymFragment extends Fragment  {
 	{
 		ListView  synonymsList = ( ListView )view.findViewById(R.id.synonyms_list);
 		synonymsList.setAdapter(new WordDetailAdapter(view.getContext(), R.layout.simple_list_item,synonymList));
-		//synonymsList.setExpanded(true);
-		TextView synonyms=(TextView)view.findViewById(R.id.synonyms);
-		synonyms.setVisibility(View.VISIBLE);
 		synonymsList.setVisibility(View.VISIBLE);
 		synonymsList.setDivider(getResources().getDrawable(R.drawable.list_divider));
 		//Utils.updateListViewHeight(synonymsList);
@@ -129,8 +126,6 @@ public class SynonymFragment extends Fragment  {
 	private void resetSynonyms()
 	{
 		ListView synonymsList = (ListView)view.findViewById(R.id.synonyms_list);	   
-		TextView synonyms=(TextView)view.findViewById(R.id.synonyms);
-		synonyms.setVisibility(View.GONE);
 		synonymsList.setVisibility(View.GONE);
 		TextView message_tv=(TextView)view.findViewById(R.id.message_tv);
 		message_tv.setVisibility(View.GONE);

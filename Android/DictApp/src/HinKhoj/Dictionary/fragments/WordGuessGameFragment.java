@@ -127,10 +127,15 @@ public class WordGuessGameFragment extends Fragment implements OnClickListener{
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		super.onOptionsItemSelected(item);
 		switch(item.getItemId()){
-
+		case R.id.show_answer_menu:
+			youAreHanged();
+			break;
+		case R.id.new_game_menu:
+			reFreshWord();
+			break;
 		}
+		super.onOptionsItemSelected(item);
 		return true;
 	}
 

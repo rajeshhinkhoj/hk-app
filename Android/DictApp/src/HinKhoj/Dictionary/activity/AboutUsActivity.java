@@ -1,6 +1,7 @@
 package HinKhoj.Dictionary.activity;
 
 import HinKhoj.Dictionary.R;
+import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.Common.UICommon;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -29,22 +30,14 @@ public class AboutUsActivity extends CommonBaseActivity {
 	      View customTitle = getLayoutInflater().inflate(R.layout.appheader_layout, null);
 	      getSupportActionBar().setCustomView(customTitle);
 	      getWindow().setBackgroundDrawable(new BitmapDrawable(getResources(),UICommon.GetBackgroundImage(this)));
-	      
-	    
-	     
-	      int currentapiVersion = android.os.Build.VERSION.SDK_INT;
-	      if (currentapiVersion >= android.os.Build.VERSION_CODES.HONEYCOMB){
-	         ImageView icon = (ImageView) findViewById(android.R.id.home);
-	         FrameLayout.LayoutParams iconLp = (FrameLayout.LayoutParams) icon.getLayoutParams();
-	         iconLp.rightMargin = iconLp.leftMargin = 20;
-	         icon.setLayoutParams(iconLp);
-	      }
-	      
+	        
 	      TextView contact_tv=(TextView)findViewById(R.id.contact_div);
 	      
 	      String message="<a href='https://play.google.com/store/apps/details?id=HinKhoj.Dictionary'> Click to give Rating and Review</a><br/><br/> Email your feedback to us at <a href='mailto:info@hinkhoj.com'>info@hinkhoj.com</a>";
 	      contact_tv.setText(Html.fromHtml(message));
 	      contact_tv.setMovementMethod(LinkMovementMethod.getInstance());
+	      
+	      DictCommon.AddTrackEvent(this);
 	      
 	   }
 

@@ -36,6 +36,7 @@ public class WODService extends Service
 			{
 				stopSelf();
 			}
+			DictCommon.tryCloseMyDb();
 		}
 		catch(Exception e)
 		{

@@ -18,6 +18,7 @@ public class BGConfigureTaskAsync extends AsyncTask<Void,Integer,Void> {
     	try {
     		DictCommon.tryCloseOfflineDb();
 			OfflineDatabaseSetupManager.UnCompressDictionary(null,context);
+			OfflineDatabaseSetupManager.UnCompressHangman(context);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

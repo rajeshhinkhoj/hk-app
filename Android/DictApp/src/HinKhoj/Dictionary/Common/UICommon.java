@@ -5,6 +5,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.support.v4.view.PagerTabStrip;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.inputmethod.InputMethodManager;
@@ -47,6 +50,11 @@ public class UICommon {
 		} catch (Exception e) {
 			// e.printStackTrace();
 		}
+	}
+	public static void initializePagerTab(Context context,PagerTabStrip tabs) {
+		 tabs.setTabIndicatorColor(Color.parseColor("#fc6900"));	
+		 tabs.setDrawFullUnderline(true);
+		 
 	}
 
 }

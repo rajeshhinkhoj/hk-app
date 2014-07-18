@@ -8,7 +8,7 @@ public class AppConstants {
 	   public static int DictionaryZipVersion=2;
 	   public static String DictionaryunZipFolder="HinKhoj.Dictionary";
 	   public static String DBFileName="hkdict.sqlite";
-		public static int DBFileSize=13471744;
+		public static int DBFileSize=13545472;
 	  // public static String DatabaseFileLocation="/data/data/HinKhoj.Dictionary/databases";
 	   public static String SqlLiteSDCardFolder="HinKhoj.Dictionary";
 	   public static String DICT_DOWNLOAD_ID="dict_download_id";

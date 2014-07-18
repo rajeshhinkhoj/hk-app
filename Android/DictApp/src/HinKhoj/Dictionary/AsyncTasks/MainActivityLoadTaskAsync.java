@@ -14,8 +14,7 @@ public class MainActivityLoadTaskAsync extends AsyncTask<Void,Integer,Void> {
 	protected Void doInBackground(Void... arg0) {
     	try {
     		DictCommon.setupOfflineDb();
-    		DictCommon.setupDatabase(dictMain);
-    		
+            DictCommon.setOfflineDbAvailability();
     	} catch (Exception e) {
 			DictCommon.LogException(e);
 		}

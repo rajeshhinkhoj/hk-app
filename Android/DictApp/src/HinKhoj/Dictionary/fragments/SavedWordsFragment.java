@@ -7,15 +7,21 @@ import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.adapters.SavedWordAdapter;
 import HinKhoj.Dictionary.adapters.SavedWordListAdapter;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 public class SavedWordsFragment extends Fragment  {
 
    private static final String ARG_POSITION = "position";
@@ -30,6 +36,7 @@ public class SavedWordsFragment extends Fragment  {
    @Override
    public void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      setHasOptionsMenu(true);
    }
 
    public SavedWordsFragment(){
@@ -75,8 +82,51 @@ public class SavedWordsFragment extends Fragment  {
       });
       return view;
    }
+   
+   @Override 
+	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		inflater.inflate(R.menu.saved_words, menu);
+	}
 
-   //raj  starts
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()){
+		case R.id.backup_saved_words_menu:
+			backupWords();
+			break;
+		}
+		super.onOptionsItemSelected(item);
+		return true;
+	}
+
+
+   private void backupWords() {
+	   try
+		{
+			Intent intent = new Intent(Intent.ACTION_SEND);
+			intent.setType("text/plain");
+			intent.putExtra(Intent.EXTRA_SUBJECT,"Saved words");
+	
+			String text="Below is list of saved words. Please save it yourself.\n";
+			 List<String> savedWords=DictCommon.getSavedWords();
+		     for(String sw: savedWords)
+		     {
+		    	 text+=(sw+"\n\t");
+		     }
+		     
+		     intent.putExtra(Intent.EXTRA_TEXT,text);
+
+			 this.getActivity().startActivity(Intent.createChooser(intent, "Share"));
+
+		}catch(Exception e)
+		{
+			Toast.makeText(this.getActivity(),"Error while saving words", Toast.LENGTH_LONG).show();
+		}
+		
+	}
+
+//raj  starts
    public void  selectTodeleteWords(){
 	   savedWords=DictCommon.getSavedWords();
       SavedWordListAdapter    adapter1=new SavedWordListAdapter(getActivity(), savedWords, isChecked);

@@ -65,9 +65,7 @@ TextToSpeech.OnInitListener {
 		// TODO Auto-generated method stub
 		if(enabled)
 		{
-			AudioManager am=(AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-			am.setStreamVolume(AudioManager.STREAM_MUSIC, am.getStreamMaxVolume(AudioManager.STREAM_MUSIC),  AudioManager.FLAG_PLAY_SOUND);
-			tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+     		tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 			Toast.makeText(context, "word "+text+" successfully spoken!!!", Toast.LENGTH_SHORT).show();
 		}
 		else

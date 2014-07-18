@@ -48,6 +48,7 @@ public class WordDetailsMobileActivity extends CommonBaseActivity implements OnW
 			DictCommon.setupDatabase(this);      
 			this.t2sHandler= new Text2SpeechHandler(this);
 			DictCommon.InitializeAds(this, R.id.ad);
+			DictCommon.AddTrackEvent(this);
 		}
 		catch(Exception e)
 		{

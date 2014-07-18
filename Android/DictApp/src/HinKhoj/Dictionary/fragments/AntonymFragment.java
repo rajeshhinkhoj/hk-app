@@ -122,9 +122,7 @@ public class AntonymFragment extends Fragment  {
 	{
 		ListView  lv = ( ListView)view.findViewById(R.id.antonyms_list);
 		lv.setAdapter(new WordDetailAdapter(view.getContext(), R.layout.simple_list_item,listItems));
-		//lv.setExpanded(true);
-		TextView heading=(TextView)view.findViewById(R.id.antonyms);
-		heading.setVisibility(View.VISIBLE);
+		
 		lv.setVisibility(View.VISIBLE);
 		lv.setDivider(getResources().getDrawable(R.drawable.list_divider));
 	}
@@ -133,10 +131,8 @@ public class AntonymFragment extends Fragment  {
 	private void resetAntonyms()
 	{
 		ListView listView = (ListView)view.findViewById(R.id.antonyms_list);
-		TextView heading=(TextView)view.findViewById(R.id.antonyms);
 		TextView message_tv=(TextView)view.findViewById(R.id.message_tv);
 		listView.setVisibility(View.GONE);
-		heading.setVisibility(View.GONE);
 		message_tv.setVisibility(View.GONE);
 	}
 

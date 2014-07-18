@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HinKhoj Dictionary</string>
-   
+    <string name="hinkhoj_dict_promo">HinKhoj Hindi English Dictionary</string>
     
     <style name="dialogTheme">
 		<item name="android:background">#FFFFFF</item>

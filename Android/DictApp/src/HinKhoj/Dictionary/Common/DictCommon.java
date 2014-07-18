@@ -40,6 +40,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.internal.aw;
 import com.google.gson.Gson;
 
 import HinKhoj.Hindi.Android.Common.AndroidHelper;
@@ -143,6 +144,21 @@ public class DictCommon {
 
 	}
 
+	public static void tryCloseMyDb() {
+		// TODO Auto-generated method stub
+		try
+		{
+			if( dbHelper !=null)
+			{
+				dbHelper.close();
+			}
+		}
+		catch(Exception e)
+		{
+			DictCommon.LogException(e);
+		}
+	}
+
 	public static void setOfflineDbAvailability() {
 		// TODO Auto-generated method stub
 		String databaseFilePath=OfflineDatabaseFileManager.GetSqlLiteDatabaseFilePath();
@@ -194,7 +210,7 @@ public class DictCommon {
 	public static void LogException(Exception e) {
 		// TODO Auto-generated method stub
 		//Log.e("hinkhoj","Exception received",e);
-		
+
 	}
 
 
@@ -648,6 +664,7 @@ public class DictCommon {
 
 	public static String[] GetEngAutoCompleteList(String initialLetters)
 	{
+		initialLetters=initialLetters.toLowerCase();
 		for(String key: acMap.keySet())
 		{
 			if(key!=null && key.startsWith(initialLetters))
@@ -687,8 +704,7 @@ public class DictCommon {
 					}
 				}
 
-				acList=acWords.toArray(new String[acWords.size()]);
-				if(acList.length >0)
+				if(acWords.size() >0)
 				{
 					acMap.put(initialLetters,acWords);
 				}
@@ -724,8 +740,7 @@ public class DictCommon {
 						c.close();
 					}
 				}
-				acList=acWords.toArray(new String[acWords.size()]);
-				if(acList.length >0)
+				if(acWords.size() >0)
 				{
 					acMap.put(initialLetters,acWords);
 				}
@@ -767,20 +782,7 @@ public class DictCommon {
 			{
 				globalList.add(word);
 			}
-			for(String key: acMap.keySet())
-			{
-				if(key.equalsIgnoreCase(keyMain))
-				{
-					continue;
-				}
-				keyRelated=acMap.get(key);
-				for(String word: keyRelated)
-				{
-					//Log.v("hinkhoj","word from list "+word);
-					globalList.add(word);
-				}
-			}
-
+			
 			for(String word: searchHistoryList)
 			{
 
@@ -798,6 +800,7 @@ public class DictCommon {
 
 	public static String[] GetHinAutoCompleteList(String initialLetters)
 	{
+		initialLetters=initialLetters.toLowerCase();
 		for(String key: acMap.keySet())
 		{
 			if(key!=null && key.startsWith(initialLetters))
@@ -837,8 +840,8 @@ public class DictCommon {
 						c.close();
 					}
 				}
-				acList=acWords.toArray(new String[acWords.size()]);
-				if(acList.length >0)
+				
+				if(acWords.size() >0)
 				{
 					acMap.put(initialLetters,acWords);
 				}
@@ -862,8 +865,7 @@ public class DictCommon {
 					while(!c.isAfterLast());
 				}
 				c.close();
-				acList=acWords.toArray(new String[acWords.size()]);
-				if(acList.length >0)
+				if(acWords.size() >0)
 				{
 					acMap.put(initialLetters,acWords);
 				}
@@ -911,7 +913,7 @@ public class DictCommon {
 		DictCommon.tryCloseHmDb();
 		android.os.Process.killProcess(android.os.Process.myPid());
 	}
-	
+
 	public static void askFeedback(Activity innerActivity) {
 		try
 		{
@@ -1009,7 +1011,7 @@ public class DictCommon {
 				//
 			}
 		}
-		
+
 		if(WordResultJSon!=null && WordResultJSon.length()>0)
 		{
 			DictionaryWordofthedayData[] Rd=GetWordResultDataFromJson(WordResultJSon);
@@ -1439,7 +1441,7 @@ public class DictCommon {
 			DictCommon.LogException(e);
 		}
 	}    
-	
+
 	public static void listen_in_hindi(String word) {
 		// TODO Auto-generated method stub
 		MediaPlayer mp = new MediaPlayer();
@@ -1447,25 +1449,30 @@ public class DictCommon {
 			mp.setDataSource("http://dict.hinkhoj.com/pronunciation/get_hindi_tts.php?word="+URLEncoder.encode(word, "UTF-8"));
 			mp.prepareAsync();
 			mp.setOnPreparedListener(new OnPreparedListener() {
-			    @Override
-			    public void onPrepared(MediaPlayer mp) {
-			        mp.start();
-			    }
+				@Override
+				public void onPrepared(MediaPlayer mp) {
+					mp.start();
+				}
 			});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//
 		}
-	
+
 	}
 
 	public static boolean isOnlineSearch(
 			Context context) {
+		Boolean isOnlineSearchDefault=false;
+		if(!DictCommon.IsOfflineDbAvailable)
+		{
+			isOnlineSearchDefault=true;
+		}
 		SharedPreferences prefs= context.getSharedPreferences(AppConstants.ISONLINE_PREF, 0);
-		return prefs.getBoolean(AppConstants.ISONLINE_PREF, true);
-		
+		return prefs.getBoolean(AppConstants.ISONLINE_PREF, isOnlineSearchDefault);
+
 	}
-	
+
 	public static void setOnlineSearch(Context context,Boolean isOnline)
 	{
 		SharedPreferences prefs= context.getSharedPreferences(AppConstants.ISONLINE_PREF, 0);
@@ -1485,16 +1492,16 @@ public class DictCommon {
 		// TODO Auto-generated method stub
 		try
 		{
-			 // Get tracker.
-	        Tracker t = ((DictApp) activity.getApplication()).getTracker(
-	            TrackerName.APP_TRACKER);
+			// Get tracker.
+			Tracker t = ((DictApp) activity.getApplication()).getTracker(
+					TrackerName.APP_TRACKER);
 
-	        // Set screen name.
-	        // Where path is a String representing the screen name.
-	        t.setScreenName(activity.getClass().getSimpleName());
+			// Set screen name.
+			// Where path is a String representing the screen name.
+			t.setScreenName(activity.getClass().getSimpleName());
 
-	        // Send a screen view.
-	        t.send(new HitBuilders.AppViewBuilder().build());
+			// Send a screen view.
+			t.send(new HitBuilders.AppViewBuilder().build());
 		}
 		catch(Exception e)
 		{

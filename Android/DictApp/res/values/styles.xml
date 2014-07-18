@@ -29,5 +29,9 @@
         <item name="background">@color/action_bar_background</item>
       <item name="homeAsUpIndicator">@drawable/ic_drawer</item>
         </style>
-
+    <style name="MyPager">
+       <item name="android:textColor">#ffffff</item>
+       <item name="android:textSize">@dimen/tab_text_size</item>
+      <item name="android:textStyle">bold</item>
+    </style>
 </resources>

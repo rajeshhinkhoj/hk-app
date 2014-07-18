@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.Constants.AppConstants;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -31,33 +32,54 @@ public class OfflineDatabaseFileManager {
 
 	}
 
-	public static String GetDatabaseFilePath() {
-		// TODO Auto-generated method stub
-		String dataDirectory="";
-		if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+
+	public static String GetSqlLiteDatabaseFolderPath()
+	{
+		String sqllitedbpath="";
+
+		Boolean useSDCard=false;
+		if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
 		{
-			dataDirectory=Environment.getExternalStorageDirectory().getAbsolutePath();
+			if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+			{
+				useSDCard=true;
+			}
+		}
+		else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
+		{
+
+			if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+			{
+				int totalInternalMemory=OfflineDatabaseSetupManager.getTotalInternalMemory();
+				int freeInternalMemory=OfflineDatabaseSetupManager.getFreeInternalMemory();
+				int totalSDCardSize=OfflineDatabaseSetupManager.getTotalSDCardSize();
+				if(totalInternalMemory<1024 && freeInternalMemory<500 && totalSDCardSize>250)
+				{
+					useSDCard=true;
+				}
+			}
+
+		}
+
+		if(useSDCard)
+		{
+			String dataDirectory=Environment.getExternalStorageDirectory().getAbsolutePath();
+			sqllitedbpath=dataDirectory+"/"+AppConstants.SqlLiteSDCardFolder+"/databases";
 		}
 		else
 		{
-			dataDirectory=Environment.getDataDirectory().getAbsolutePath();
+			sqllitedbpath=Environment.getDataDirectory().getAbsolutePath()+"/data/HinKhoj.Dictionary/databases";
 		}
-		dataDirectory= dataDirectory+"/"+AppConstants.DictionaryunZipFolder;
-
-		File unzipPathDir= new File(dataDirectory);
-		if(!unzipPathDir.exists())
-		{
-			if(!unzipPathDir.mkdirs())
-			{
-				Log.v("hinkhoj","not able to create "+unzipPathDir);
-			}
-		}
-
-		return dataDirectory;
+		CheckOrCreatePath(sqllitedbpath);
+		return sqllitedbpath;
 	}
 
+	public static String GetDatabaseFilePath() {
+		// TODO Auto-generated method stub
+		return GetSqlLiteDatabaseFolderPath();
+	}
 
-	public static String GetSqlLiteDatabaseFilePath()
+	public static String GetSqlLiteDatabaseFilePathV2()
 	{
 		String sqllitedbpath="";
 		if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
@@ -72,6 +94,12 @@ public class OfflineDatabaseFileManager {
 		return sqllitedbpath;
 	}
 
+
+	public static String GetSqlLiteDatabaseFilePath()
+	{
+		String sqllitedbpath=GetSqlLiteDatabaseFolderPath()+"/"+AppConstants.DBFileName;
+		return sqllitedbpath;
+	}
 
 	private static void CheckOrCreatePath(String dirPath) {
 		// TODO Auto-generated method stub
@@ -95,21 +123,11 @@ public class OfflineDatabaseFileManager {
 
 	public static String GetHMSqlLiteDatabaseFilePath()
 	{
-		String sqllitedbpath="";
-		if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
-		{
-			String dataDirectory=Environment.getExternalStorageDirectory().getAbsolutePath();
-			sqllitedbpath=dataDirectory+"/"+AppConstants.SqlLiteSDCardFolder+"/databases/hm.db";
-		}
-		else
-		{
-			sqllitedbpath=Environment.getDataDirectory().getAbsolutePath()+"/data/HinKhoj.Dictionary/databases/hm.db";
-		}
+		String sqllitedbpath=GetSqlLiteDatabaseFolderPath()+"/hm.db";
 		return sqllitedbpath;
 	}
 
-
-	public static String GetSqlLiteDatabaseFolderPath()
+	public static String GetSqlLiteDatabaseFolderPathV2()
 	{
 		String sqllitedbpath="";
 		if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
@@ -121,7 +139,7 @@ public class OfflineDatabaseFileManager {
 		{
 			sqllitedbpath=Environment.getDataDirectory().getAbsolutePath()+"/data/HinKhoj.Dictionary/databases";
 		}
-		CheckOrCreatePath(sqllitedbpath);
+
 		return sqllitedbpath;
 	}
 
@@ -215,6 +233,94 @@ public class OfflineDatabaseFileManager {
 
 					}
 				}
+
+				if(currentVersion==3)
+				{
+					//move DictLiteFolder.
+					//create new directory structure
+					String oldDBPathv1=GetSqlLiteDatabaseFolderPathv1();
+					String oldMydbFilePathv1=oldDBPathv1+"/hkdictsettings.db";
+					File oldMyFilev1= new File(oldMydbFilePathv1);
+
+					String oldDBPathv2=GetSqlLiteDatabaseFolderPathV2();
+					String oldMydbFilePathv2=oldDBPathv2+"/hkdictsettings.db";
+					File oldMyFilev2= new File(oldMydbFilePathv2);
+
+
+					String newDBPath=GetSqlLiteDatabaseFolderPath();
+
+
+					String mydbFilePath=newDBPath+"/"+DatabaseDoor.DATABASE_NAME;
+
+					if(oldMyFilev1.exists())
+					{
+
+						String oldDBBackupPath=CreateSqlLiteDatabaseFolderPathv1Backup();
+
+						String oldBKMydbFilePath=oldDBBackupPath+"/hkdictsettings.db";
+
+
+						Log.v("hinkhoj","old my db file exists at "+oldDBBackupPath);
+						try
+						{
+							FileInputStream finMyOldDB=new FileInputStream(oldMydbFilePathv1);
+							FileOutputStream foutmyDB= new FileOutputStream(mydbFilePath);
+							OfflineDatabaseSetupManager.copyFile(finMyOldDB, foutmyDB);
+							foutmyDB.close();
+							finMyOldDB.close();
+							//create backup
+							finMyOldDB=new FileInputStream(oldMydbFilePathv1);
+							foutmyDB= new FileOutputStream(oldBKMydbFilePath);
+							OfflineDatabaseSetupManager.copyFile(finMyOldDB, foutmyDB);
+
+							foutmyDB.close();
+							finMyOldDB.close();
+
+							Log.v("hinkhoj","old files moved successfully");
+
+						}
+						catch(Exception e)
+						{
+							Log.v("hinkhoj","error copying files.");
+							DictCommon.LogException(e);
+						}
+
+					}
+					else if(!newDBPath.equalsIgnoreCase(oldDBPathv2) && oldMyFilev2.exists())
+					{
+
+                        Log.v("hinkhoj","Moving files from v2 to v3");
+						String oldBKMydbFilePath=oldDBPathv2+"/hkdictsettings-bkup.db";
+
+						try
+						{
+							DictCommon.tryCloseMyDb();
+							FileInputStream finMyOldDB=new FileInputStream(oldMydbFilePathv2);
+							FileOutputStream foutmyDB= new FileOutputStream(mydbFilePath);
+							OfflineDatabaseSetupManager.copyFile(finMyOldDB, foutmyDB);
+							foutmyDB.close();
+							finMyOldDB.close();
+
+
+							//create backup
+							finMyOldDB=new FileInputStream(oldMydbFilePathv2);
+							foutmyDB= new FileOutputStream(oldBKMydbFilePath);
+							OfflineDatabaseSetupManager.copyFile(finMyOldDB, foutmyDB);
+
+							foutmyDB.close();
+							finMyOldDB.close();
+
+							Log.v("hinkhoj","v2: old files moved successfully");
+
+						}
+						catch(Exception e)
+						{
+							Log.v("hinkhoj","v2 upgrade: error copying files.");
+							DictCommon.LogException(e);
+						}
+					}
+
+				}
 			}
 		}
 		catch(Exception e)
@@ -226,16 +332,23 @@ public class OfflineDatabaseFileManager {
 
 	private static void cleanAllAppFiles(int appVersion) {
 
-		if(appVersion==1)
+		try
 		{
-			if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+			if(appVersion==1)
 			{
-				//delete zip files
-				String dataDirectory=Environment.getExternalStorageDirectory().getAbsolutePath();
-				String zipPath=dataDirectory+"/HinKhojDict_1";
-				deleteDirectory(zipPath);				
-				deleteDirectory(dataDirectory+"/HinKhojDictSqlLite");
+				if(Environment.getExternalStorageState().equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+				{
+					//delete zip files
+					String dataDirectory=Environment.getExternalStorageDirectory().getAbsolutePath();
+					String zipPath=dataDirectory+"/HinKhojDict_1";
+					deleteDirectory(zipPath);				
+					deleteDirectory(dataDirectory+"/HinKhojDictSqlLite");
+				}
 			}
+		}
+		catch(Exception e)
+		{
+			DictCommon.LogException(e);
 		}
 
 	}

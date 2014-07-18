@@ -4,15 +4,14 @@ import HinKhoj.Dictionary.R;
 import HinKhoj.Dictionary.Common.AppAccountManager;
 import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.fragments.AppSetupFragment;
-import HinKhoj.Dictionary.fragments.DictionarySearchFragment;
 import HinKhoj.Dictionary.fragments.DictionaryToolsFragment;
 import HinKhoj.Dictionary.fragments.HindiEnglishDictionaryFragment;
-import HinKhoj.Dictionary.fragments.MainFragment;
 import HinKhoj.Dictionary.fragments.MyDictionaryFragment;
 import HinKhoj.Dictionary.fragments.PremiumAccountFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -72,11 +71,10 @@ public class CommonBaseActivity extends ActionBarActivity{
       bundle.putInt("selectedTab", selectedTab);
       switch (selectedFragment) {
          case 0:
-        	 
+        	removeAllFragments(); 
             HindiEnglishDictionaryFragment pageSlidingTabStripFragment = HindiEnglishDictionaryFragment.newInstance();
             pageSlidingTabStripFragment.setArguments(bundle);
-            replaceFragment(pageSlidingTabStripFragment,pageSlidingTabStripFragment.getClass().getSimpleName());
-            
+            replaceFragment(pageSlidingTabStripFragment,pageSlidingTabStripFragment.getClass().getSimpleName());            
         	  
             break;
          case 1:
@@ -107,6 +105,7 @@ public class CommonBaseActivity extends ActionBarActivity{
         
              
          default:
+        	 removeAllFragments();
             HindiEnglishDictionaryFragment pageSlidingTabStripFragment3 = HindiEnglishDictionaryFragment.newInstance();
             pageSlidingTabStripFragment3.setArguments(bundle);
             replaceFragment(pageSlidingTabStripFragment3,pageSlidingTabStripFragment3.getClass().getSimpleName());
@@ -115,23 +114,21 @@ public class CommonBaseActivity extends ActionBarActivity{
       }
 
    }
+
    
- 
-   
-   @Override
-  	public void onActivityResult(int requestCode, int resultCode, Intent data)
-  	{
-  		try
-  		{
-  			super.onActivityResult(requestCode, resultCode, data);
-  		}
-  		catch(Exception e)
-  		{
-  			DictCommon.LogException(e);
-  		}
-  	}
-   
-   @Override
+   private void removeAllFragments() {
+	     try
+	     {
+	    	 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+	     }
+	     catch(Exception e)
+	     {
+	    	 DictCommon.LogException(e);
+	     }
+	
+}
+
+@Override
    public void onBackPressed() {
       super.onBackPressed();
    }
@@ -200,6 +197,5 @@ public class CommonBaseActivity extends ActionBarActivity{
       } catch (Exception e) {
 
       }
-
    }
 }

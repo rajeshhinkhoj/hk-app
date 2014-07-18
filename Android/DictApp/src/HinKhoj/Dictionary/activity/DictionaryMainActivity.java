@@ -34,7 +34,6 @@ import HinKhoj.Dictionary.fragments.SavedWordsFragment;
 import HinKhoj.Dictionary.fragments.SavedWordsFragment.OnWordSelectedListener;
 import HinKhoj.Dictionary.fragments.SearchHistoryFragment;
 import HinKhoj.Dictionary.fragments.SearchHistoryFragment.onWordSelectedFromHistoryListener;
-import HinKhoj.Dictionary.fragments.TabResultFragment;
 import HinKhoj.Hindi.KeyBoard.HindiCheckBoxHandler;
 import HinKhoj.Hindi.KeyBoard.HindiEditText;
 import HinKhoj.Hindi.KeyBoard.HindiKBHelper;
@@ -85,7 +84,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private int fragmentPosition;
-	private boolean doubleBackToExitPressedOnce;
 	private boolean isDeviceRotate;
 	private IabHelper billingHelper=null;
 	private Boolean searchOptionsShown=false;
@@ -98,7 +96,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		setContentView(R.layout.activity_main);
 		try
 		{
-			//getWindow().setBackgroundDrawable(new BitmapDrawable(getResources(),UICommon.GetBackgroundImage(this)));
 			DictCommon.initializeSettings(this);
 			initializeDrawer();
 			initializeSearchHeader();
@@ -167,7 +164,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		};
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-		UICommon.getOverflowMenu(this);
+		//UICommon.getOverflowMenu(this); //for forced hardware menu
 	}
 
 
@@ -189,7 +186,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		}
 	}
 
-	
+
 
 	private void setHomeTitle(String title) {
 		// TODO Auto-generated method stub
@@ -263,7 +260,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		return super.onCreateOptionsMenu(menu);
 	}
 
-
 	@SuppressLint("NewApi")
 	@Override
 	public boolean onOptionsItemSelected(
@@ -280,11 +276,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		case R.id.search_menu:
 
 			item.expandActionView();
-			//selectItem(0, 0);
-
-			//LoadSearchBar();
-
-
 			break;
 		case R.id.exit_menu:
 			DictCommon.exitApp(this);
@@ -309,12 +300,10 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		{
 			// TODO Auto-generated method stub
 			/** Get the edit text from the action view */
-			if(SearchET==null)
+			if(this.SearchET==null)
 			{
-				SearchET = ( HindiEditText ) findViewById(R.id.searchButton);
-
-
-				SearchET.setOnTouchListener(new RightDrawableOnTouchListener(SearchET) {
+				this.SearchET = ( HindiEditText ) this.findViewById(R.id.searchButton);
+				this.SearchET.setOnTouchListener(new RightDrawableOnTouchListener(SearchET) {
 					@Override
 					public boolean onDrawableTouch(final MotionEvent event) {
 						return onClickSearch(SearchET);
@@ -615,7 +604,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 	public void LaunchMeaning(String searchWord,boolean isOnline) {
 		setFragmentPosition(CommonBaseActivity.MEANING_TAB);
-		// TODO Auto-generated method stub
 		if(SearchET!=null)
 		{
 			SearchET.clearFocus();
@@ -624,47 +612,42 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		DictCommon.dictResultData=null;
 		if(getResources().getBoolean(R.bool.large_layout))
 		{
-		
-		     
-		     
-			 Intent i= new Intent(this,WordDetailsActivity.class);
-		      i.putExtra(DictionarySearchFragment.SEARCH_WORD_KEY, searchWord);
-		      i.putExtra(DictionarySearchFragment.IS_ONLINE, isOnline);
-		      startActivity(i);
-		      
-		      /*
-
+			Intent i= new Intent(this,WordDetailsActivity.class);
+			i.putExtra(DictionarySearchFragment.SEARCH_WORD_KEY, searchWord);
+			i.putExtra(DictionarySearchFragment.IS_ONLINE, isOnline);
+			startActivity(i);
+		}
+		else
+		{
 			Bundle bundle=new Bundle();
 			bundle.putInt("selectedTab", 0);
 			bundle.putBoolean(DictionarySearchFragment.IS_ONLINE, isOnline);
 			bundle.putString(DictionarySearchFragment.SEARCH_WORD_KEY, searchWord);
-			TabResultFragment tabFragment = TabResultFragment.newInstance(new Object[]{0,0,searchWord,true});
-			tabFragment.setArguments(bundle);
-			replaceFragment(tabFragment,tabFragment.getClass().getSimpleName());
-		    
-		    */
-
-		      
-		}
-		else
-		{
-		Bundle bundle=new Bundle();
-		bundle.putInt("selectedTab", 0);
-		bundle.putBoolean(DictionarySearchFragment.IS_ONLINE, isOnline);
-		bundle.putString(DictionarySearchFragment.SEARCH_WORD_KEY, searchWord);
-		SearchResultFragment pageSlidingTabStripFragment = SearchResultFragment.newInstance();
-		pageSlidingTabStripFragment.setArguments(bundle);
-		replaceFragment(pageSlidingTabStripFragment,pageSlidingTabStripFragment.getClass().getSimpleName());
+			SearchResultFragment pageSlidingTabStripFragment = SearchResultFragment.newInstance();
+			pageSlidingTabStripFragment.setArguments(bundle);
+			replaceFragment(pageSlidingTabStripFragment,pageSlidingTabStripFragment.getClass().getSimpleName());
 		}
 		this.InitializeAds();
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void onBackPressed() {
 
 		try
 		{
+			super.onBackPressed();
+			if(getSupportFragmentManager().getBackStackEntryCount()==0)
+			{
+				finish();
+			}
+			else
+			{
+				if(SearchET!=null)
+				{
+					SearchET.setText("");
+				}
+			}
+			/*
 			if(getFragmentPosition()==0)
 			{
 				DictCommon.exitApp(this);
@@ -677,10 +660,11 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 				} 
 				selectItem(0,0);
 			}
+			 */
 		}
 		catch(Exception e2)
 		{
-			DictCommon.exitApp(this);
+			//DictCommon.exitApp(this);
 		}
 
 	}
@@ -763,8 +747,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 	IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
 		@Override
 		public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
-			Log.d("hinkhoj", "Query inventory finished.");
-
 			// Have we been disposed of in the meantime? If so, quit.
 			if (billingHelper == null) return;
 
@@ -793,10 +775,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 			{
 				AppAccountManager.setAdsStatus(DictionaryMainActivity.this, true);
 			}
-			Log.d(TAG, "User is " + (mIsPremium ? "PREMIUM" : "NOT PREMIUM"));
-
-			Log.d(TAG, "Initial inventory query finished; enabling main UI.");
-
 			DictCommon.InitializeAds(DictionaryMainActivity.this, R.id.ad);
 		}
 
@@ -812,10 +790,8 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		try
 		{
 			if (result.isSuccess()) {
-				Log.d("hinkhoj","In-app Billing set up" + result); 
 				if (!billingHelper.subscriptionsSupported()) {
 					AppAccountManager.setAdsStatus(DictionaryMainActivity.this, true);
-					//   UICommon.showLongToast(this,"Subscriptions not supported on your device yet. Sorry!");
 					DictCommon.InitializeAds(this, R.id.ad);
 					return;
 				}
@@ -830,7 +806,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 			} 
 			else {
-				Log.d("hinkhoj","Problem setting up In-app Billing: " + result);
 				DictCommon.InitializeAds(this, R.id.ad);
 
 			}
@@ -864,7 +839,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 	@Override
 	public void onMenuItemClicked(int selectionPosition, int tabPosition) {
-		//Log.v("hinkhoj","came in menu item clicked");
 		isDeviceRotate=true;
 		setTabPosition(tabPosition);
 		setFragmentPosition(selectionPosition);
@@ -962,20 +936,33 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 	public void delayedInitialization() {
 		try
 		{
-			getWindow().setSoftInputMode(
-					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-			InitializeAlarm();
-			InitializeWODNotification();
-			billingHelper = new IabHelper(this, AppProperties.getBase64Key());
-			billingHelper.enableDebugLogging(true);
-			billingHelper.startSetup(this);
-
-			if(SearchET!=null)
+			if(this.SearchET!=null)
 			{
-				String[] acList=DictCommon.GetDefaultAutoCompleteList();
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.dropdown_item,acList);
-				SearchET.setThreshold(2);
-				SearchET.setAdapter(adapter);
+
+				ToggleButton tb=(ToggleButton)findViewById(R.id.onlineToggle);
+				tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						if (isChecked) {
+							isOnline=true;
+							DictCommon.setOnlineSearch(buttonView.getContext(), true);
+						} else {
+							// The toggle is disabled
+							isOnline=false;
+							DictCommon.setOnlineSearch(buttonView.getContext(), false);
+						}
+					}
+				});
+
+				if(DictCommon.isOnlineSearch(this))
+				{
+					tb.setChecked(true);
+					this.isOnline=true;
+				}
+				else
+				{
+					tb.setChecked(false);
+					this.isOnline=false;
+				}
 
 				ImageButton speakButton = (ImageButton) findViewById(R.id.voiceInputButton);
 				PackageManager pm = getPackageManager();
@@ -999,48 +986,50 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 					});
 					speakButton.setVisibility(View.VISIBLE);
 				}
-				
-				ToggleButton tb=(ToggleButton)findViewById(R.id.onlineToggle);
-				tb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-				    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				        if (isChecked) {
-				            isOnline=true;
-				            DictCommon.setOnlineSearch(buttonView.getContext(), true);
-				        } else {
-				            // The toggle is disabled
-				        	isOnline=false;
-				            DictCommon.setOnlineSearch(buttonView.getContext(), false);
-				        }
-				    }
-				});
-				
-				if(DictCommon.isOnlineSearch(this))
-				{
-					tb.setChecked(true);
-					this.isOnline=true;
-				}
-				else
-				{
-					tb.setChecked(false);
-					this.isOnline=false;
-				}
 
-				DictCommon.AddTrackEvent(this);
 			}
-			//DictCommon.InitializeAds(this, R.id.ad);
-			AppRater.app_launched(this);
 		}
 		catch(Exception e)
 		{
 			Toast.makeText(this, "Error while loading some components", Toast.LENGTH_LONG).show();
 			DictCommon.LogException(e);
 		}
+
+		try
+		{
+			billingHelper = new IabHelper(this, AppProperties.getBase64Key());
+			billingHelper.enableDebugLogging(false);
+			billingHelper.startSetup(this);
+		}
+		catch(Exception e)
+		{
+			Toast.makeText(this, "Error while loading some components", Toast.LENGTH_LONG).show();
+			DictCommon.LogException(e);
+		}
+
+		try
+		{
+			getWindow().setSoftInputMode(
+					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+			InitializeAlarm();
+			InitializeWODNotification();
+			DictCommon.AddTrackEvent(this);
+			AppRater.app_launched(this);				
+		}
+		catch(Exception e)
+		{
+			Toast.makeText(this, "Error while loading some components", Toast.LENGTH_LONG).show();
+			DictCommon.LogException(e);
+		}
+
+
+
+
 	}
 
 
 
 	public void InitializeAds() {
-		//Log.v("hinkhoj","intializing ads");
 		DictCommon.InitializeAds(this, R.id.ad);
 	}
 
@@ -1064,9 +1053,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		billingHelper = null;
 	}
 
-
-
-
 	public String getEditText() {
 		// TODO Auto-generated method stub
 		if(SearchET!=null)
@@ -1081,18 +1067,11 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		SearchET.clearFocus();
 	}
 
-
-
-
 	@Override
 	public void onWordClick(int meaing_id, String word) {
 		// TODO Auto-generated method stub
 
 	}
-
-
-
-
 	@Override
 	public void onWordSpeak(String word) {
 		// TODO Auto-generated method stub
@@ -1101,7 +1080,6 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 	@Override
 	public void hideHelp() {
-		// TODO Auto-generated method stub
 		if(this.hkb!=null)
 		{
 			this.hkb.HideHelp();
@@ -1110,13 +1088,9 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		}
 	}
 
-
-
-
 	public boolean getIsOnline() {
 		// TODO Auto-generated method stub
 		return isOnline;
 	}
 
 }
-

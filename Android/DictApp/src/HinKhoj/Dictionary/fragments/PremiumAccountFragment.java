@@ -2,19 +2,21 @@ package HinKhoj.Dictionary.fragments;
 
 import HinKhoj.Dictionary.R;
 import HinKhoj.Dictionary.Common.AppAccountManager;
+import HinKhoj.Dictionary.Common.UICommon;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
+import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 
 public class PremiumAccountFragment extends Fragment {
 
@@ -62,23 +64,16 @@ public class PremiumAccountFragment extends Fragment {
    public void onViewCreated(View view, Bundle savedInstanceState) {
       super.onViewCreated(view, savedInstanceState);
 
-      PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view
+      PagerTabStrip tabs = ( PagerTabStrip) view
                .findViewById(R.id.tabs);
-      tabs.setIndicatorColor(Color.parseColor("#fc6900"));
-      tabs.setTextColor(Color.parseColor("#ffffff"));
-      if(getResources().getBoolean(R.bool.large_layout)){
-         tabs.setShouldExpand(true);
-      }else{
-         tabs.setShouldExpand(false);     
-      }
-      tabs.setTextSize(getResources().getDimensionPixelSize(R.dimen.tab_text_size));
+      UICommon.initializePagerTab(view.getContext(), tabs);
       final ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
       MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
       pager.setOffscreenPageLimit(4);
       pager.setAdapter(adapter);
-      tabs.setViewPager(pager);
+      //tabs.setViewPager(pager);
 
-      tabs.setOnPageChangeListener(new OnPageChangeListener() {
+      pager.setOnPageChangeListener(new OnPageChangeListener() {
 
          @Override
          public void onPageSelected(int arg0) {
@@ -108,7 +103,7 @@ public class PremiumAccountFragment extends Fragment {
 
       @Override
       public CharSequence getPageTitle(int position) {
-         return TITLES[position];
+         return TITLES[position].toUpperCase();
       }
 
       @Override

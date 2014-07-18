@@ -1,19 +1,19 @@
 package HinKhoj.Dictionary.fragments;
 
 import HinKhoj.Dictionary.R;
+import HinKhoj.Dictionary.Common.UICommon;
 import HinKhoj.Dictionary.fragments.MyDictionaryFragment.OnPagerContentChangedListener;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 
 public class DictionaryToolsFragment extends Fragment {
 
@@ -55,23 +55,20 @@ public void onResume() {
    @Override
    public void onViewCreated(View view, Bundle savedInstanceState) {
       super.onViewCreated(view, savedInstanceState);
-
-      PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view
-               .findViewById(R.id.tabs);
-      tabs.setIndicatorColor(Color.parseColor("#fc6900"));
-      tabs.setTextColor(Color.parseColor("#ffffff"));
-      tabs.setTextSize(getResources().getDimensionPixelSize(R.dimen.tab_text_size));
-      if(getResources().getBoolean(R.bool.large_layout)){
-         tabs.setShouldExpand(true);
-      }else{
-         tabs.setShouldExpand(false);     
-      }
       ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
+      PagerTabStrip tabs = (PagerTabStrip) view
+               .findViewById(R.id.tabs);
+      UICommon.initializePagerTab(view.getContext(), tabs);
+      if(getResources().getBoolean(R.bool.large_layout)){
+         //tabs.setShouldExpand(true);
+      }else{
+        // tabs.setShouldExpand(false);     
+      }
       
       MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
       pager.setAdapter(adapter);
-      tabs.setViewPager(pager);
-      tabs.setOnPageChangeListener(new OnPageChangeListener() {
+      //tabs.setViewPager(pager);
+      pager.setOnPageChangeListener(new OnPageChangeListener() {
 
          @Override
          public void onPageSelected(int arg0) {
@@ -103,7 +100,7 @@ public void onResume() {
 
          @Override
          public CharSequence getPageTitle(int position) {
-            return TITLES[position];
+            return TITLES[position].toUpperCase();
          }
 
          @Override

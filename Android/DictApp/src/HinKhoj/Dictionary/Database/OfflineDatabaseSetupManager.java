@@ -254,8 +254,7 @@ public class OfflineDatabaseSetupManager {
 		{
 		StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
 		int spaceinMB=0;
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){ 
-			@SuppressWarnings("deprecation") 			
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){ 			
 			long sdAvailSize = stat.getAvailableBlocksLong() * stat.getBlockSizeLong(); 
 			spaceinMB=(int)sdAvailSize/(1024*1024);
 		} 		
@@ -282,5 +281,53 @@ public class OfflineDatabaseSetupManager {
 
 		return testResults;
 
+	}
+	
+	public static int getTotalInternalMemory() {
+		StatFs stat = new StatFs(Environment.getDataDirectory().getPath());
+		int spaceinMB=0;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){ 			
+			long sdAvailSize = stat.getBlockCountLong()*stat.getBlockSizeLong();
+			spaceinMB=(int)sdAvailSize/(1024*1024);
+		} 		
+		else{ 			
+			@SuppressWarnings("deprecation") 			
+			double sdAvailSize = (double)stat.getBlockCount() * (double)stat.getBlockSize(); 
+			spaceinMB=(int)sdAvailSize/(1024*1024);
+		}
+		Log.v("hinkhoj","internal memory space is:"+spaceinMB);
+		return spaceinMB;
+	
+	}
+	public static int getFreeInternalMemory() {
+		StatFs stat = new StatFs(Environment.getDataDirectory().getPath());
+		int spaceinMB=0;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){ 			
+			long sdAvailSize = stat.getAvailableBlocksLong()*stat.getBlockSizeLong();
+			spaceinMB=(int)sdAvailSize/(1024*1024);
+		} 		
+		else{ 			
+			@SuppressWarnings("deprecation") 			
+			double sdAvailSize = (double)stat.getAvailableBlocks() * (double)stat.getBlockSize(); 
+			spaceinMB=(int)sdAvailSize/(1024*1024);
+		}
+		Log.v("hinkhoj","free :internal memory space is:"+spaceinMB);
+		return spaceinMB;
+	}
+	public static int getTotalSDCardSize() {
+		StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+		int spaceinMB=0;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){ 			
+			long sdAvailSize = stat.getBlockCountLong()*stat.getBlockSizeLong();
+			spaceinMB=(int)sdAvailSize/(1024*1024);
+		} 		
+		else{ 			
+			@SuppressWarnings("deprecation") 			
+			double sdAvailSize = (double)stat.getBlockCount() * (double)stat.getBlockSize(); 
+			spaceinMB=(int)sdAvailSize/(1024*1024);
+		}
+		Log.v("hinkhoj","total :sd card memory space is:"+spaceinMB);
+		return spaceinMB;
+		
 	}
 }

@@ -14,11 +14,10 @@ public class IniatializeConfigTaskAsync extends AsyncTask<Void,Integer,Void> {
 	@Override
 	protected Void doInBackground(Void... arg0) {
 		try {
-			Thread.sleep(500);
 			DictCommon.setupOfflineDb();
 			UICommon.GetBackgroundImage(activity);
 			DictCommon.setupDatabase(activity);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -35,7 +34,7 @@ public class IniatializeConfigTaskAsync extends AsyncTask<Void,Integer,Void> {
 	protected void onPostExecute(Void args) {
 		try
 		{
-			activity.startConfigure();
+			//activity.startConfigure();
 			
 
 		}
