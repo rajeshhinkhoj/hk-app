@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HinKhoj Dictionary</string>
+    <string name="action_settings">Settings</string>
+    <string name="please_wait">Please wait&#8230;</string>
+    <string name="offline_dictionary_configuration_message">Offline dictionary\'s being configured </string>
+    <string name="cancel">Cancel</string>
+    <string name="home">Home</string>
+    <string name="configure">Configure</string>
+    <string name="word_of_the_day">Word of the day</string>
+    <string name="equal_sign">=</string>
+    <string name="load_wod_main">Loading word of the day....</string>
+    <string name="latest_announcements">Latest announcements</string>
+    <string name="my_dictionary">My dictionary</string>
+    <string name="my_favourites">My favourites</string>
+    <string name="legal_dictionary">Legal dictionary</string>
+    <string name="hindi_pad">Hindi type Pad</string>
+    <string name="search_history">Search History</string>
+    <string name="dictionary_tools">Dictionary tools</string>
+    <string name="word_guess_game">Word guess game</string>
+    <string name="spell_checker">Spell checker</string>
+    <string name="pronunciation_english">Pronunciation (English)</string>
+    <string name="pronunciation">Pronunciation</string>
+    <string name="$2">$2</string>
+    <string name="remove_ads">Remove Advertisements</string>
+    <string name="free">Free</string>
+    <string name="answer">Answer:</string>
+    <string name="phone_support_hindi">Phone support hindi?</string>
+    <string name="check_if_ur_phone_support_hindi">Check if your phone support hindi fonts by default.Not recommended to change it if hindi is properly displayed in dictionary.</string>
+    <string name="save_search_history">Save search history?</string>
+    <string name="save_searched_dictionary">Save searched dictionary meanings.Recommended to turn on as it make searching fast.</string>
+    <string name="chances_left">Chances left:</string>
+    <string name="u_got_it_right">You got it right</string>
+    <string name="u_got_it_wrong">You got it wrong</string>
+    <string name="correct_answer_is">Correct answer is</string>
+    <string name="guess_word_using_hint_below">Guess the word using hint below</string>
+    <string name="similar_words">Similar Words</string>
+    <string name="type">Type</string>
+    <string name="type_hint">Type to search</string>
+    <string name="install_text_to_speech_software">This app produce pronunciations only for english words.You need to install text2speech software for it to work properly</string>
+    <string name="save_this_word">Save this word</string>
+    <string name="save_word">Save Word</string>
+    <string name="word">Word</string>
+    <string name="subscribe_to_daily_word_of_day">Show notification for daily word of the day</string>
+    <string name="saved_words">Saved words</string>
+    <string name="listen">Listen</string>
+    <string name="listen_word">Listen Word</string>
+    <string name="new_word">New word</string>
+    <string name="check">Check</string>
+    <string name="can_not_find_word">We could not find</string>
+    <string name="hindi_english_dictionary">HinKhoj Dictionary</string>
+    <string name="nearest_matches_are_below">Nearest matches are below</string>
+    <string name="correct_spelling">You have entered correct spelling</string>
+    <string name="entered_wrong_spelling_for_word">You have entered wrong spelling for word</string>
+    <string name="options_for_wrong_spelling_of_word">Your spelling of word is wrong as per our information.You may be looking for words below</string>
+    <string name="your_internet_connection_is_not_working">Oops!\nSeems your internet connection is not working</string>
+    <string name="Check_your_internet_connection_or_switch_to_offline_dictionary">Please check your internet connection OR\nSwitch to offline dictionary</string>
+    <string name="premium_need_internet">Premium account settings need internet connection to be switched on. Please turn internet and refresh this page.</string>
+   
+    
+    <!-- dummy words -->
+    <string name="mania">Loading..</string>
+        <string name="hint">Hint</string>
+    <string name="nouns">(Nouns)</string>
+    <string name="adjective">(Adjective)</string>
+    <string name="verb">(Verb)</string>
+    <string name="view_other_similar_words">View other similar words</string>
+    <string name="exact_match">EXACT\nMATCH</string>
+    <string name="nearby_match">NEAR BY\nMATCH</string>
+     <string name="definition">WORD BY\nDEFINITION</string>
+    <string name="type_in_hindi">हिंदी में टाइप करें</string>
+    <string name="mania_hindi">Loading..</string>
+    <string name="mania_hinglish">(Loading..)</string>
+    <string name="user_name">Kamal Kishore</string>
+    <string name="online_dictionary_drawer">Online Dictionary</string>
+    <string name="offline_dictionary_drawer">Offline Dictionary</string>
+    <string name="dictionary_tools_drawer">Dictionary Tools</string>
+    <string name="my_dictionary_drawer">My Dictionary</string>
+    <string name="feedback_drawer">Feedback</string>
+    <string name="my_account">My Account</string>
+    <string name="usage">Usage:</string>
+    <string name="spell_checking">Spell checking</string>
+    <string name="settings">Settings</string>
+    <string name="app_setup">App Setup</string>
+     <string name="select_to_delete">Select to delete</string>
+    <string name="delete">Delete</string>
+    <string name="delete_search_history">Delete search history</string>
+    <!-- dummy words -->
+
+    <string name="title_activity_dictionary_tools">DictionaryToolsActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_my_dictionary">MyDictionaryActivity</string>
+    <string name="action_contact">Contact</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="synonyms">Similar Words/Synonyms</string>
+    <string name="antonyms">Opposite Words/Antonyms</string>
+    <string name="english_meaning">Definition</string>
+    <string name="loading">Loading...</string>
+    <string name="premium_account">Premium Account</string>
+    <string name="web_app">HinKhoj Web App</string>
+    <string name="about_us">About Us</string>
+    <string name="share_app_menu">Share Hinkhoj App</string>
+    <string name="offline_setup">Offline setup</string>
+    <string name="ads_settings">Advertisement settings</string>
+     <string name="exit">Exit</string>
+     <string name="search_hint">Search in dictionary</string>
+     <string name="no_data_available">No data available currently.If you are using offline mode, please use online search to get detailed data.</string>
+     <string name="ad_unit_id">ac50a7e513464449</string>
+     <string name="hinkhoj_dict_promo">HinKhoj Hindi English Dictionary</string>
+</resources>

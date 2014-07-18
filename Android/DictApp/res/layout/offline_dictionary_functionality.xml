@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dictionary_func_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    
+      <RelativeLayout
+        android:id="@+id/setup_dictionary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/sky_blue_background"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/setup_dictionary_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/settings_menu" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/setup_dictionary_image"
+            android:text="@string/offline_setup"
+            android:textColor="@color/White"
+            android:textSize="@dimen/large_text_size" />
+
+        <ImageView
+            android:id="@+id/setup_dictionary_indictor"
+            android:layout_width="12dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/arrow_down_button" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/setup_dictionary_childs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sub_menu_background"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/configure_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/configure"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/settings"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+    </LinearLayout>
+    
+        
+    <RelativeLayout
+        android:id="@+id/dictionary_tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/sky_blue_background"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/dictionary_tools_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/dictionary_tools_menu" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/dictionary_tools_image"
+            android:text="@string/dictionary_tools"
+            android:textColor="@color/White"
+            android:textSize="@dimen/large_text_size" />
+
+        <ImageView
+            android:id="@+id/dictionary_tools_indictor"
+            android:layout_width="12dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/arrow_down_button" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/dictionary_tools_childs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sub_menu_background"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/word_of_the_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/word_of_the_day"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/pronunciation_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/pronunciation_english"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/spell_checker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/spell_checker"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/word_guess_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/word_guess_game"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+    </LinearLayout>
+    
+        <RelativeLayout
+        android:id="@+id/my_dictionary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/sky_blue_background"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/my_dictionary_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/my_dictionary_menu" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/my_dictionary_image"
+            android:text="@string/my_dictionary"
+            android:textColor="@color/White"
+            android:textSize="@dimen/large_text_size" />
+
+        <ImageView
+            android:id="@+id/my_dictionary_indictor"
+            android:layout_width="12dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/arrow_down_button" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/my_dictionary_childs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/sub_menu_background"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/saved_word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/saved_words"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/search_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:text="@string/search_history"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="12dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/arrow_black" />
+        </RelativeLayout>
+
+        </LinearLayout>
+        
+      
+    
+    
+</LinearLayout>

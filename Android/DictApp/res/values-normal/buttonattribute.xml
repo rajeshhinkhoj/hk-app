@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="startColor">#449def</color>
+    <color  name="endColor">#2f6699</color>
+    <color name="disablestartColor">#565051</color>
+    <color  name="disableendColor">#736F6E</color>
+    <color name="strokeColor">#2f6699</color>
+    <color name="pressColor">#8c8a8c</color>
+    <color name="focusColor">#000000</color>
+    <color name="enableColor">#abcdef</color>
+    <color name="textcolor">#ffffff</color>
+    <dimen name="radius">7dp</dimen>
+    <dimen name="paddingTop">10dp</dimen>
+    <dimen name="paddingBottom">10dp</dimen>
+    <dimen name="paddingLeft">10dp</dimen>
+    <dimen name="paddingRight">10dp</dimen>
+    <dimen name="marginTop">10dp</dimen>
+    <dimen name="strokeWidth">5dp</dimen>
+    <dimen name="buttonHeight">50dp</dimen>   
+     <dimen name="btntextSize">20dp</dimen>    
+    <string name="angle">270</string>
+</resources>

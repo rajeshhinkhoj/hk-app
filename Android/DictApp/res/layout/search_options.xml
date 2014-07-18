@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <include
+        android:id="@+id/kbhelpId"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/hindihelp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:padding="1dp"
+      >
+      
+        
+          <HinKhoj.Hindi.Android.Common.HindiCheckBox
+            android:id="@+id/cbh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:button="@layout/custom_checkbox_design"
+            android:text="@string/type_in_hindi"
+            android:textColor="@color/dark_blue_background"
+            android:textSize="@dimen/small_text_size" />
+        
+        
+           
+        <ToggleButton
+         android:layout_toRightOf="@+id/cbh"
+    	android:id="@+id/onlineToggle"
+    	android:layout_width="wrap_content"
+    	android:layout_height="25dp"
+    	android:textOn="Online Mode"
+    	android:textOff="Offline Mode"
+    	android:textColor="@color/white"
+    	android:padding="1dp"
+    	 android:layout_marginLeft="@dimen/margin_small"
+    	 android:layout_centerVertical="true"
+    	android:background="@drawable/button_toggle"
+    	android:textSize="@dimen/small_text_size"
+    	android:checked="true"
+        />
+        
+          <ImageButton
+            android:id="@+id/voiceInputButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/onlineToggle"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:background="@color/white"
+            android:src="@android:drawable/ic_btn_speak_now"
+            android:visibility="gone" />
+          </RelativeLayout>
+ </LinearLayout>

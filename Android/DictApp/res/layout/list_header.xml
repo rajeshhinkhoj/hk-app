@@ -1,0 +1,13 @@
+<HinKhoj.Hindi.Android.Common.HindiTextViewFast
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_header_title"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/sky_blue_background"
+    android:paddingTop="5dip"
+    android:paddingBottom="5dip"
+    android:textColor="@color/white"
+    android:layout_margin="40dp"
+    android:paddingLeft="5dip"
+    style="?android:attr/listSeparatorTextViewStyle" />
+

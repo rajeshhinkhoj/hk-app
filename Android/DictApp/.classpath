@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="/var/www/android/apps/HinkhojDictNew/libs/hinkhoj hindi for android.jar"/>
+	<classpathentry kind="lib" path="/var/www/android/apps/HinkhojDictNew/libs/hinkhoj dblib android.jar"/>
+	<classpathentry kind="lib" path="/var/www/android/apps/HinkhojDictNew/libs/gson-1.6.jar"/>
+	<classpathentry kind="lib" path="/var/www/android/apps/HinkhojDictNew/libs/InMobi-4.1.1.jar"/>
+	<classpathentry kind="lib" path="/var/www/android/apps/HinkhojDictNew/libs/libadapterinmobi.jar"/>
+	<classpathentry kind="src" path="/android-support-v7-appcompat"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

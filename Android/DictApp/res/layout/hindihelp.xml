@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/kbhelpId"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/kblHeight"
+    android:background="@color/white" >
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/kbrHeight" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_01"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_11"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_21"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_31"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_41"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_51"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_61"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_71"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_81"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tc_00"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_10"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_20"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_30"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_40"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_50"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_60"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_70"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_80"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+            </TableRow>
+        </TableLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/kbrHeight" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_91"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_101"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_111"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_121"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_131"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_141"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_151"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_161"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <HinKhoj.Hindi.Android.Common.HindiTextView
+                    android:id="@+id/tc_171"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tc_90"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_100"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_110"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_120"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_130"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_140"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_150"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_160"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tc_170"
+                    style="@style/helpTVStyle"
+                    android:layout_width="@dimen/lbWidth"
+                    android:layout_height="@dimen/lbHeight"
+                    android:layout_marginRight="@dimen/hbMargin"
+                    android:text="" />
+            </TableRow>
+        </TableLayout>
+    </TableRow>
+
+</TableLayout>

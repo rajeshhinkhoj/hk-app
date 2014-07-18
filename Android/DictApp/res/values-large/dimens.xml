@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+ <dimen name="input_text_size">17sp</dimen>
+     <dimen name="tab_text_size">16sp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
+    <dimen name="large_text_size">22sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_medium">10dp</dimen>
+    <dimen name="padding_large">15dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_large">15dp</dimen>
+    
+    
+    
+    <dimen name="text_size">23sp</dimen>
+    <dimen name="lbHeight">30dp</dimen>
+    <dimen name="lbWidth">40dp</dimen>
+    <dimen name="hbMargin">5dp</dimen>
+    <dimen name="leftMargin">10dp</dimen>
+    <dimen name="topMargin">5dp</dimen>
+    <dimen name="txtSize">18sp</dimen>
+    <dimen name="headerFontSize">25sp</dimen>
+    <dimen name="inputWidth">250dp</dimen>
+    <dimen name="inputHeight">50dp</dimen>
+    <dimen name="iconSpace">25dp</dimen>
+    <dimen name="kblHeight">120dp</dimen>
+    <dimen name="kbrHeight">60dp</dimen>
+    <dimen name="startMenuTopMargin_l1">50dp</dimen>
+    <dimen name="startMenuTopMargin_l2">50dp</dimen>
+    <dimen name="body_topMargin">8dp</dimen>
+    <dimen name="buttonFont">14sp</dimen>
+    <dimen name="leftMargin_s">8dp</dimen>
+ <dimen name="search_bar_width">250dp</dimen>
+</resources>

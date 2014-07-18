@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:id="@+id/hindi_meaning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/medium_text_size"
+            android:text="@string/mania"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/equalSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equal_sign"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/english_meaning"
+            android:layout_width="wrap_content"
+             android:textSize="@dimen/medium_text_size"
+            android:layout_height="wrap_content"
+            android:text="@string/mania_hindi"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>

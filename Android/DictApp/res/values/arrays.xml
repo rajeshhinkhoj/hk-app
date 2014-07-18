@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="class_prompt">Choose a class</string>
+    <array name="drawer_image_array">
+        <item>@drawable/home_icon</item>
+        <item>@drawable/dictionary_tools</item>
+        <item>@drawable/myaccount</item>
+        <item>@drawable/premium</item>
+        <item>@drawable/settings</item>
+         <item>@drawable/ic_action_share</item>
+        <item>@drawable/ic_action_good</item>
+        <item>@drawable/ic_action_web_site</item>
+         <item>@drawable/ic_action_about</item>
+         <item>@drawable/ic_action_cancel</item>
+    </array>
+    <array name="drawer_text_array">
+        <item>@string/home</item>
+        <item>@string/dictionary_tools_drawer</item>
+        <item>@string/my_dictionary</item>
+         <item>@string/premium_account</item>
+        <item>@string/app_setup</item>
+        <item>@string/share_app_menu</item>
+        <item>@string/feedback_drawer</item>
+        <item>@string/web_app</item>
+        <item>@string/about_us</item>
+         <item>@string/exit</item>
+    </array>
+    
+      <string-array name="mydictionary_array">
+        <item>@string/saved_words</item>
+        <item>@string/search_history</item>
+      </string-array>
+      <string-array name="setup_array">
+        <item>@string/configure</item>
+        <item>@string/settings</item>
+    </string-array>
+      <string-array name="premium_array">
+        <item>@string/ads_settings</item>
+    </string-array>
+    
+   <string-array name="search_result_array">
+        <item>Meaning</item>
+        <item>Definition</item>
+        <item>Similar Words</item>
+        <item>Opposite Words</item>
+    </string-array>
+    <string-array name="dictionary_tools_array">
+        <item>@string/word_of_the_day</item>
+        <item>@string/pronunciation</item>
+        <item>@string/spell_checking</item>
+        <item>@string/word_guess_game</item>
+    </string-array>
+    
+       <string-array name="hindi_english_dictionary_array">
+        <item>@string/hinkhoj_dict_promo</item>
+    </string-array>
+</resources>

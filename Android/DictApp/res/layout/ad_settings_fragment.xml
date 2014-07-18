@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#FF000000" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/config_msg_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:padding="@dimen/padding_medium"
+            android:background="@color/list_background"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status of Ads :"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+
+            <TextView
+                android:id="@+id/ads_status_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                android:textColor="@color/dark_orange"
+                android:textSize="@dimen/medium_text_size" />
+        </LinearLayout>
+        
+          <LinearLayout
+            android:id="@+id/premium_msg_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:layout_below="@+id/config_msg_ll"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:padding="@dimen/padding_medium"
+            android:background="@color/list_background"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please upgrade to premium account for removing advertisements."
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_text_size" />
+        </LinearLayout>
+        
+          <LinearLayout
+            android:id="@+id/config_btn_ll"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/premium_msg_ll"
+            android:layout_marginTop="@dimen/margin_small"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/purchase_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:padding="@dimen/padding_small"
+                android:text="Upgrade to Premium account"
+                android:background="@color/sky_blue_background"
+                android:enabled="false"
+                android:textColor="@color/white" />
+        </LinearLayout>
+        
+            <LinearLayout
+                android:id="@+id/no_connection_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_below="@+id/config_btn_ll"
+                android:background="@color/pronunciation_text_color"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_medium"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/internet_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:background="@drawable/wrong_word" />
+
+                <TextView
+                    android:id="@+id/internet_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:text="@string/premium_need_internet"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            
+                <LinearLayout
+                android:id="@+id/subscription_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_below="@+id/no_connection_ll"
+                android:background="@color/pronunciation_text_color"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium"
+                android:visibility="gone" >
+              <TextView
+            android:id="@+id/subs_lv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="Subscription information:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/medium_text_size" />
+
+        <HinKhoj.Dictionary.ui.ExpandableHeightListView
+            android:id="@+id/subs_data_lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/list_background"
+            android:textSize="@dimen/medium_text_size" >
+           </HinKhoj.Dictionary.ui.ExpandableHeightListView>
+           </LinearLayout>
+           
+              <LinearLayout
+                android:id="@+id/debug_billing_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_below="@+id/subscription_ll"
+                android:background="@color/pronunciation_text_color"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_medium"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/debug_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:background="@drawable/ic_action_warning_dark" />
+
+                <TextView
+                    android:id="@+id/debug_msg_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:text="@string/loading"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+                
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,46 @@
+<resources>
+
+    <!--
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    -->
+    <dimen name="activity_horizontal_margin">20dp</dimen>
+    
+     <dimen name="tab_text_size">17sp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
+    <dimen name="large_text_size">24sp</dimen>
+    <dimen name="small_text_size">15sp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">15dp</dimen>
+    <dimen name="padding_large">20dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">15dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    
+    
+      <dimen name="lbHeight">40dp</dimen>
+    <dimen name="hl_height">80dp</dimen>
+    <dimen name="lbWidth">50dp</dimen>
+    <dimen name="hbMargin">5dp</dimen>
+    <dimen name="leftMargin">50dp</dimen>
+    <dimen name="topMargin">2dp</dimen>
+    <dimen name="start_topMargin">150dp</dimen>
+    <dimen name="start_bottomMargin">2dp</dimen>
+    <dimen name="start_rowMargin">100dp</dimen>
+    <dimen name="start_cellMargin">25dp</dimen>
+    <dimen name="iconSpace">30dp</dimen>
+    <dimen name="inputWidth">400dp</dimen>
+    <dimen name="inputHeight">55dp</dimen>
+    <dimen name="kblHeight">130dp</dimen>
+    <dimen name="kbrHeight">60dp</dimen>
+    <dimen name="startMenuTopMargin_l1">120dp</dimen>
+    <dimen name="startMenuTopMargin_l2">120dp</dimen>
+    <dimen name="txtSize">19sp</dimen>
+    <dimen name="column_gap">100sp</dimen>
+    <dimen name="row_margin">100sp</dimen>
+    <dimen name="buttonFont">17sp</dimen>
+    <dimen name="headerFontSize">25sp</dimen>
+    <dimen name="body_topMargin">10dp</dimen>
+   <dimen name="leftMargin_s">10dp</dimen>
+    <dimen name="search_bar_width">400dp</dimen>
+</resources>

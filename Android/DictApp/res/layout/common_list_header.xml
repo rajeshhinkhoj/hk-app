@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/padding_small"
+        android:background="@color/list_background"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/mania"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/dark_orange" />
+
+        <TextView
+            android:id="@+id/grammar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_toRightOf="@id/word"
+            android:singleLine="false"
+            android:text="@string/nouns"
+            android:textColor="@color/black"
+            android:textSize="@dimen/small_text_size" />
+
+        <ImageView
+            android:id="@+id/divider_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/word"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@drawable/list_divider" />
+
+        <HinKhoj.Dictionary.ui.ExpandableHeightListView
+            android:id="@+id/meaning_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider_image"
+            android:layout_marginBottom="@dimen/margin_large" >
+        </HinKhoj.Dictionary.ui.ExpandableHeightListView>
+    </RelativeLayout>

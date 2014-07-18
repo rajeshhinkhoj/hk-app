@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                   <include
+        android:id="@+id/kbhelpId"
+        layout="@layout/hindihelp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"  />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                     android:background="@drawable/type_in_hindi_background" 
+                    >
+
+                    <HinKhoj.Hindi.Android.Common.HindiCheckBox
+                        android:id="@+id/cbh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:button="@layout/custom_checkbox_design"
+                        android:text="@string/type_in_hindi"
+                        android:textColor="@color/blue" />
+                </LinearLayout>
+ </LinearLayout>

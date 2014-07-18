@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+           <gradient
+                android:startColor="@color/startColor"
+                android:endColor="@color/endColor"
+                android:angle="@string/angle" />
+            <stroke
+                android:width="@dimen/strokeWidth"
+                android:color="@color/pressColor" />
+            <corners
+                android:radius="@dimen/radius" />
+            <padding
+                android:left="@dimen/paddingLeft"
+                android:top="@dimen/paddingTop"
+                android:right="@dimen/paddingRight"
+                android:bottom="@dimen/paddingBottom" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape>
+          <gradient
+                android:startColor="@color/startColor"
+                android:endColor="@color/endColor"
+                android:angle="@string/angle" />  
+          <stroke 
+              android:width="@dimen/strokeWidth"
+              android:color="@color/focusColor"/> 
+          <corners 
+              android:radius="@dimen/radius"/>     
+          <padding
+                android:left="@dimen/paddingLeft"
+                android:top="@dimen/paddingTop"
+                android:right="@dimen/paddingRight"
+                android:bottom="@dimen/paddingBottom" />      
+        </shape>
+    </item>
+     <item android:state_enabled="false">
+        <shape>
+          <gradient
+                android:startColor="@color/disablestartColor"
+                android:endColor="@color/disableendColor"
+                android:angle="@string/angle" />  
+          <stroke 
+              android:width="@dimen/strokeWidth"
+              android:color="@color/enableColor"/> 
+          <corners 
+              android:radius="@dimen/radius"/>     
+          <padding
+                android:left="@dimen/paddingLeft"
+                android:top="@dimen/paddingTop"
+                android:right="@dimen/paddingRight"
+                android:bottom="@dimen/paddingBottom" />      
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient
+                android:startColor="@color/startColor"
+                android:endColor="@color/endColor"
+                android:angle="@string/angle" />
+            <stroke
+                android:width="@dimen/strokeWidth"
+                android:color="@color/strokeColor" />
+            <corners
+                android:radius="@dimen/radius" />
+            <padding
+                android:left="@dimen/paddingLeft"
+                android:top="@dimen/paddingTop"
+                android:right="@dimen/paddingRight"
+                android:bottom="@dimen/paddingBottom"/>
+        </shape>
+    </item>
+</selector>

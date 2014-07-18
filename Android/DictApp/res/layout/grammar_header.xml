@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+ >     
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_medium"
+      />  
+    <RelativeLayout
+        android:id="@+id/match_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/search_word_background"
+        android:padding="@dimen/padding_small" >
+
+        <ImageView
+            android:id="@+id/checkmark_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:background="@drawable/checkmark_small" />
+
+        <TextView
+            android:id="@+id/checkmark_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_toRightOf="@id/checkmark_image"
+            android:text="@string/mania"
+            android:textColor="@color/White"
+            android:textSize="@dimen/medium_text_size" />
+
+        <TextView
+            android:id="@+id/match_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:text="@string/exact_match"
+            android:textColor="#4eff00"
+            android:textSize="@dimen/small_text_size" />
+    </RelativeLayout>
+    
+<RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/padding_small"
+        android:background="@color/list_background"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/mania"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/dark_orange" />
+
+        <TextView
+            android:id="@+id/grammar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_toRightOf="@id/word"
+            android:singleLine="false"
+            android:text="@string/nouns"
+            android:textColor="@color/black"
+            android:textSize="@dimen/small_text_size" />
+
+        </RelativeLayout>
+  </LinearLayout>
