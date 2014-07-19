@@ -45,4 +45,7 @@
     <dimen name="row_margin">100sp</dimen>
     <dimen name="leftMargin_s">10dp</dimen>
     <dimen name="search_bar_width">400dp</dimen>
+     <dimen name="drawer_padding_top">45dp</dimen>
+     <dimen name="drawer_width">400dp</dimen>
+     <dimen name="drawer_item_height">65dp</dimen>
 </resources>

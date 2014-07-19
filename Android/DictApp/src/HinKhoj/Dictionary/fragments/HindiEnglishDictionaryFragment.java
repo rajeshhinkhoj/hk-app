@@ -103,7 +103,7 @@ public class HindiEnglishDictionaryFragment extends Fragment {
 
       @Override
       public CharSequence getPageTitle(int position) {
-         return TITLES[position].toUpperCase();
+         return TITLES[position];
       }
 
       @Override
@@ -113,12 +113,10 @@ public class HindiEnglishDictionaryFragment extends Fragment {
 
       @Override
       public Fragment getItem(int position) {
-    	 // Log.v("hinkhoj","Get item is "+ position+" selected tab is :"+tabPosition);
     	  String searchWordPassed="";
     	  if(tabPosition==position)
     	  {
     		  searchWordPassed=searchWord;
-    		  //Log.v("hinkhoj","search word passed is "+ searchWordPassed);
     	  }
          switch (position) {
          case 0:

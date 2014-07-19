@@ -32,8 +32,6 @@ public class UICommon {
 	public static void showLongToast(
 			Context context,
 			String msg) {
-	
-		//Log.v("hinkhoj",msg);
 		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
 		
 	}

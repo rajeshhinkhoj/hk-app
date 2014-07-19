@@ -1,5 +1,6 @@
 package HinKhoj.Dictionary.AsyncTasks;
 
+import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.activity.DictionaryMainActivity;
 import android.os.AsyncTask;
 
@@ -29,7 +30,7 @@ public class LaunchExternalDictSearchTask extends  AsyncTask<String,Long,Void>
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","unexpected exception");
+			DictCommon.LogException(e);
 		}
 	}
 	@Override

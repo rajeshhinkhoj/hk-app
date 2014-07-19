@@ -30,7 +30,6 @@ public class AppRater {
         // Increment launch counter
         long launch_count = prefs.getLong("launch_count", 0) + 1;
         editor.putLong("launch_count", launch_count);
-        Log.v("hinkhoj","launch_count"+launch_count);
 
         // Get date of first launch
         Long date_firstLaunch = prefs.getLong("date_firstlaunch", 0);

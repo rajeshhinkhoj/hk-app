@@ -56,7 +56,6 @@ public class SettingsFragment extends Fragment {
 	
 	   if(!isPageLoaded && view!=null)
 	   {
-		   Log.v("hinkhoj","Loading setting page");
 		   isPageLoaded=true;
 	   CheckBox hindi_support=(CheckBox)view.findViewById(R.id.hindi_support_cb);
 	      if(SettingsManager.IsHindiSupported(view.getContext()))

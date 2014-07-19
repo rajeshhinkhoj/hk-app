@@ -96,7 +96,6 @@ public class AdvanceHindiTextWatcher implements TextWatcher {
 				}
 			}
 			tt=het.Hlt.ProcessKeyEvent(lastChar);
-			//Log.v("hinkhoj","display related words "+lastChar);
 			het.KBHelper.displayRelatedWords(lastChar);
 			het.isLastKeyProcessed=true;
 

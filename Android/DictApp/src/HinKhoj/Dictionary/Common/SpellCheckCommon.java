@@ -17,8 +17,7 @@ public class SpellCheckCommon {
 		@SuppressWarnings("deprecation")
 		String encodeWord=URLEncoder.encode(word);
 		String seekUrl="http://dict.hinkhoj.com/WebServices/GetSpellCheckResult.php?word="+encodeWord;
-		SpellCheckJSon=HinKhoj.Hindi.Android.Common.AndroidHelper.ReadURLContent(seekUrl);
-		//Log.v("hinkhoj","Json is "+SpellCheckJSon);	  
+		SpellCheckJSon=HinKhoj.Hindi.Android.Common.AndroidHelper.ReadURLContent(seekUrl);  
 		SpellCheckData scd=SpellCheckCommon.GetSpellCheckResultDataFromJson(SpellCheckJSon);
 		return new SpellCheckResultData(scd);
 	}	    	

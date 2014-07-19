@@ -45,18 +45,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.DictionaryMainActivity" />
-        </activity>
-     
-      
-        <activity
-            android:name=".activity.WordDetailsMobileActivity"
-            android:label="@string/app_name"
-            android:theme="@style/MyCustomTheme"
-            android:noHistory="true"
-            android:configChanges="keyboard|keyboardHidden|orientation" 
-          >
-        </activity>
-        
+        </activity>        
         <activity
             android:name=".activity.AboutUsActivity"
             android:label="@string/app_name"

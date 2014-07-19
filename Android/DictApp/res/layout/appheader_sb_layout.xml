@@ -27,6 +27,7 @@
             android:inputType="textNoSuggestions"
             android:singleLine="true"
             android:textSize="@dimen/input_text_size"
+            android:textCursorDrawable="@null"
             android:textColor="@color/black" />  
                
          

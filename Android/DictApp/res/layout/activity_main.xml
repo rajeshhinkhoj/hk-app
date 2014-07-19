@@ -42,7 +42,7 @@
 
     <ExpandableListView
         android:id="@+id/left_drawer"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#151515"

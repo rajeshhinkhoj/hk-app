@@ -33,7 +33,6 @@ public class HangmanBGConfigureTaskAsync extends AsyncTask<Void,Integer,Void> {
 
     @Override
 	protected void onPostExecute(Void result) {
-    	//Log.v("hinkhoj","hangman setup complete");
     	DictCommon.initializeHangmanDB();
     }
 	

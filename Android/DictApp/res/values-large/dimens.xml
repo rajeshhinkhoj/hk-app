@@ -36,4 +36,7 @@
     <dimen name="buttonFont">14sp</dimen>
     <dimen name="leftMargin_s">8dp</dimen>
  <dimen name="search_bar_width">250dp</dimen>
+  <dimen name="drawer_padding_top">45dp</dimen>
+  <dimen name="drawer_width">350dp</dimen>
+    <dimen name="drawer_item_height">60dp</dimen>
 </resources>

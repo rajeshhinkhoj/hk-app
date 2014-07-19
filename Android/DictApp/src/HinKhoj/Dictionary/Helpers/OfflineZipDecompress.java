@@ -46,8 +46,7 @@ public class OfflineZipDecompress {
 						counter+=read;
 			              if(counter%10240==0)
 			              {
-							//Log.v("hinkhoj","counter="+counter);
-			              
+			          
 							int updateCounter=counter*100/TOTAL_SIZE;
 							updateCounter=updateCounter/4;
 							updatePM(updateCounter);
@@ -63,7 +62,6 @@ public class OfflineZipDecompress {
 			dismissPM();
 
 		} catch(Exception e) { 
-			Log.e("Decompress", "unzip", e); 
 			dismissPM();
 		} 
 
@@ -81,7 +79,6 @@ public class OfflineZipDecompress {
 	{
 		if(progressManager!=null)
 		{
-			//Log.v("hinkhoj","pogress="+updateCounter);
 			if(updateCounter>90)
 			{
 				progressManager.setProgress(90);

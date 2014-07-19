@@ -12,7 +12,6 @@ public class WODAlarmService extends BroadcastReceiver
 	@Override
 	public void onReceive(Context context, Intent intent) 
 	{
-		 //Log.v("hinkhoj","Alarm received");
 		 if(!DictCommon.getNotification(context))
     	 {
     		 return;

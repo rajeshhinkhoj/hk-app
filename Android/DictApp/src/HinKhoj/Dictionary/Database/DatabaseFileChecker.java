@@ -2,6 +2,8 @@ package HinKhoj.Dictionary.Database;
 
 import java.io.File;
 
+import HinKhoj.Dictionary.Common.DictCommon;
+
 public class DatabaseFileChecker {
 public static boolean IsDictionaryFileAvailable() {
 		
@@ -20,10 +22,7 @@ public static void DeleteDictionaryDb() {
 	{
 		hkDictPath.delete();
 	}
-	else
-	{
-		//Log.v("hinkhoj","database file "+hkDictPath.getAbsolutePath()+"does not exists");
-	}
+	
 	
 	try
 	{
@@ -44,7 +43,7 @@ public static void DeleteDictionaryDb() {
 	}
 	catch(Exception e)
 	{
-		//Log.v("hinkhoj","error deleting temp database files"+e.toString());
+		DictCommon.LogException(e);
 	}
 	
 	

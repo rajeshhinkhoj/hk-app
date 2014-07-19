@@ -42,8 +42,7 @@ public class AutocompleteTaskAsync extends AsyncTask<String,Integer,String[]> {
     		
 		} 
     	catch (Exception e) {
-			// TODO Auto-generated catch block
-			//Log.v("hinkhoj","error while getting autocomplete async task"+e.toString());
+			DictCommon.LogException(e);
 		}
 		return acList;
     }

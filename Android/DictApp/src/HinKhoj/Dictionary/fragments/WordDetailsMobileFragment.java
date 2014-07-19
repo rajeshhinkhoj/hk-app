@@ -47,18 +47,30 @@ public class WordDetailsMobileFragment extends Fragment  {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		main_word="";
-		if(savedInstanceState!=null)
+		Bundle b=getArguments();
+		if(b!=null)
 		{
-			main_word=savedInstanceState.getString("word");
-			meaning_id=savedInstanceState.getInt("meaning_id");
+			main_word=b.getString(DictionarySearchFragment.MAIN_WORD);
+			meaning_id=b.getInt(DictionarySearchFragment.MEANING_ID);
+		}
+		if(meaning_id<=0)
+		{
+			if(savedInstanceState!=null)
+			{
+				main_word=savedInstanceState.getString("word");
+				meaning_id=savedInstanceState.getInt("meaning_id");
 
+			}
+			Intent i=getActivity().getIntent();
+			if(i!=null)
+			{
+				main_word=i.getStringExtra("word");
+				meaning_id=i.getIntExtra("meaning_id", -1);
+			}
 		}
-		Intent i=getActivity().getIntent();
-		if(i!=null)
-		{
-			main_word=i.getStringExtra("word");
-			meaning_id=i.getIntExtra("meaning_id", -1);
-		}
+
+
+
 	}
 
 	private static String ARG_POSITION;
@@ -93,7 +105,7 @@ public class WordDetailsMobileFragment extends Fragment  {
 			}
 		});
 
-		
+
 		ImageButton saveMeaningWord= (ImageButton)view.findViewById(R.id.save_meaning_word);
 		saveMeaningWord.setOnClickListener(new View.OnClickListener() {
 
@@ -113,8 +125,8 @@ public class WordDetailsMobileFragment extends Fragment  {
 				listen_meaning_word();
 			}
 		});
-		
-		
+
+
 		if(meaning_id!=-1 || main_word !="")
 		{
 			refreshView(meaning_id, main_word);
@@ -152,13 +164,13 @@ public class WordDetailsMobileFragment extends Fragment  {
 			{
 				meaning_word=dwd.hin_word;
 			}
-			
+
 			DictCommon.SaveWord(meaning_word,!isHindi);
 			Toast.makeText(view.getContext(), "word "+meaning_word+" successfully saved!!!", Toast.LENGTH_LONG).show();
 		}
 	}
 
-	
+
 	private void listen_word() {
 		// TODO Auto-generated method stub
 		if(this.dwd!=null && this.main_word!=null)
@@ -180,7 +192,7 @@ public class WordDetailsMobileFragment extends Fragment  {
 			}
 		}
 	}
-	
+
 
 	private void listen_meaning_word() {
 		// TODO Auto-generated method stub
@@ -197,14 +209,14 @@ public class WordDetailsMobileFragment extends Fragment  {
 			}
 			if(isHindi)
 			{
-			if(this.main_word!="")
-			{
-				if(mCallBack==null)
+				if(this.main_word!="")
 				{
-					mCallBack=(OnWordSelectedFromSearchSuccess) getActivity();
+					if(mCallBack==null)
+					{
+						mCallBack=(OnWordSelectedFromSearchSuccess) getActivity();
+					}
+					mCallBack.onWordSpeak(meaning_word);
 				}
-               mCallBack.onWordSpeak(meaning_word);
-			}
 			}
 			else
 			{
@@ -214,10 +226,11 @@ public class WordDetailsMobileFragment extends Fragment  {
 	}
 
 
-	public static WordDetailsMobileFragment newInstance(int position) {
+	public static WordDetailsMobileFragment newInstance(Object[] args) {
 		WordDetailsMobileFragment f = new WordDetailsMobileFragment();
 		Bundle b = new Bundle();
-		b.putInt(ARG_POSITION, position);
+		b.putString(DictionarySearchFragment.MAIN_WORD, (String)args[1]);
+		b.putInt(DictionarySearchFragment.MEANING_ID, (int)args[0]);
 		f.setArguments(b);
 		return f;
 	}
@@ -243,7 +256,7 @@ public class WordDetailsMobileFragment extends Fragment  {
 			{
 				dwd.hin_example=dwd.hin_example.trim();
 			}
-			
+
 			if((dwd.eng_example!=null && !dwd.eng_example.equalsIgnoreCase("")) || (dwd.hin_example!=null && !dwd.hin_example.equalsIgnoreCase("")))
 			{
 				TextView usage = (TextView)view.findViewById(R.id.word_usage);
@@ -274,7 +287,7 @@ public class WordDetailsMobileFragment extends Fragment  {
 
 				meaning_tv.setText(Html.fromHtml(DictCommon.toCodeString(dwd.hin_word)));
 				meaning_word=dwd.hin_word;
-				
+
 			}
 			else
 			{
@@ -285,7 +298,7 @@ public class WordDetailsMobileFragment extends Fragment  {
 				meaning_word=dwd.eng_word;
 				translitateTV.setText("");
 
-				}	
+			}	
 
 		}
 		else

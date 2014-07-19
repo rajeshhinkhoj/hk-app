@@ -76,7 +76,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","exeption"+e);
+			DictCommon.LogException(e);
 		}
 
 	}
@@ -92,12 +92,12 @@ public class DictCommon {
 			{
 				return;
 			}
-			//Log.v("hinkhoj","setting up new db connection..");
+			
 			dbHelper= new DatabaseDoor(context);
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error setting up database");
+			DictCommon.LogException(e);
 		}
 	}
 
@@ -120,7 +120,7 @@ public class DictCommon {
 		}
 		catch(Exception  e)
 		{
-			//Log.v("hinkhoj","problem opening offline db");
+			DictCommon.LogException(e);
 		}
 	}
 
@@ -208,12 +208,10 @@ public class DictCommon {
 
 
 	public static void LogException(Exception e) {
-		// TODO Auto-generated method stub
-		//Log.e("hinkhoj","Exception received",e);
+		
+		 //Log.e("hinkhoj","Exception received",e);
 
 	}
-
-
 
 	public static DictResultData GetDictResult(Context context,String word) throws IOException, JSONException
 	{
@@ -231,7 +229,7 @@ public class DictCommon {
 			}
 			catch(Exception e)
 			{
-				//Log.v("hinkhoj","error while searching word"+e.toString());
+				DictCommon.LogException(e);
 			}
 		}
 		if(resultJson==null || resultJson=="")
@@ -244,7 +242,7 @@ public class DictCommon {
 				}
 				catch(Exception e)
 				{
-					//Log.v("hinkhoj","offline: error while searching word"+e.toString());
+					DictCommon.LogException(e);
 				}
 				if(resultJson==null || resultJson=="")
 				{
@@ -261,7 +259,7 @@ public class DictCommon {
 						}
 						catch(Exception e)
 						{
-							//Log.v("hinkhoj","error while saving word "+e.toString());
+							DictCommon.LogException(e);
 						}
 						return new DictResultData(dcr);
 					}
@@ -288,7 +286,7 @@ public class DictCommon {
 						}
 						catch(Exception e)
 						{
-							//Log.v("hinkhoj","error while saving word "+e.toString());
+							DictCommon.LogException(e);
 						}
 					}
 				}
@@ -301,7 +299,7 @@ public class DictCommon {
 					}
 					catch(Exception e2)
 					{
-						//Log.v("hinkhoj","offline: error while searching word"+e2.toString());
+						DictCommon.LogException(e2);
 					}
 					if(resultJson==null || resultJson=="")
 					{
@@ -320,7 +318,7 @@ public class DictCommon {
 								}
 								catch(Exception e2)
 								{
-									//Log.v("hinkhoj","error while saving word "+e2.toString());
+									DictCommon.LogException(e2);
 								}
 								return new DictResultData(dcr);
 							}
@@ -362,7 +360,7 @@ public class DictCommon {
 			}
 			catch(Exception e)
 			{
-				//Log.v("hinkhoj","error while searching word"+e.toString());
+				DictCommon.LogException(e);
 			}
 		}
 		if(resultJson==null || resultJson=="")
@@ -380,7 +378,7 @@ public class DictCommon {
 				}
 				catch(Exception e)
 				{
-					//Log.v("hinkhoj","error while saving word "+e.toString());
+					DictCommon.LogException(e);
 				}
 			}
 			else
@@ -401,7 +399,7 @@ public class DictCommon {
 						}
 						catch(Exception e)
 						{
-							//Log.v("hinkhoj","error while saving word "+e.toString());
+							DictCommon.LogException(e);
 						}
 						dcr=DictCommon.GetDictResultDataFromJson(resultJson);
 					}
@@ -591,7 +589,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while looking search words"+e.toString());
+			DictCommon.LogException(e);
 		}
 		return  searchHistory;
 	}
@@ -608,7 +606,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while looking search words"+e.toString());
+			DictCommon.LogException(e);
 		}
 		return  searchHistory;
 	}
@@ -625,7 +623,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while looking search words"+e.toString());
+			DictCommon.LogException(e);
 		}
 		return  searchHistory;
 	}
@@ -641,7 +639,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while saving words"+e.toString());
+			DictCommon.LogException(e);
 		}
 	}
 
@@ -749,7 +747,6 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while autocompleting eng words"+e.toString());
 			DictCommon.LogException(e);
 		}
 		return acList;
@@ -791,7 +788,6 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while creating ac list");
 			DictCommon.LogException(e);
 		}
 
@@ -874,7 +870,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error while autocompleting hindi words"+e.toString());
+			DictCommon.LogException(e);
 		}
 		return acList;
 
@@ -953,7 +949,7 @@ public class DictCommon {
 	public static void HandleException(Context context,
 			Exception e, String opMsg) {
 		// TODO Auto-generated method stub
-		//Log.v("hinkhoj",opMsg+" details-"+e.toString());
+		
 		Toast.makeText(context, opMsg+" send mail to info@hinkhoj.com", Toast.LENGTH_LONG).show();
 
 	}
@@ -989,7 +985,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error getting word of day"+e.toString());
+			DictCommon.LogException(e);
 		}
 
 		if(needDownload && DictCommon.IsConnected(context))
@@ -1098,7 +1094,7 @@ public class DictCommon {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error getting word of day"+e.toString());
+			DictCommon.LogException(e);
 		}
 		return true;
 	}
@@ -1196,6 +1192,14 @@ public class DictCommon {
 					.build();
 					av.loadAd(ar);
 				}
+				if(!DictCommon.IsConnected(activity))
+				{
+					av.setVisibility(View.GONE);
+				}
+				else
+				{
+					av.setVisibility(View.VISIBLE);
+				}
 			}
 			else
 			{
@@ -1219,8 +1223,7 @@ public class DictCommon {
 		@SuppressWarnings("deprecation")
 		String encodeWord=URLEncoder.encode(word);
 		String seekUrl="http://api.hinkhoj.com/WebServices/.php?word="+encodeWord;
-		SpellCheckJSon=HinKhoj.Hindi.Android.Common.AndroidHelper.ReadURLContent(seekUrl);
-		//Log.v("hinkhoj","Json is "+SpellCheckJSon);	  
+		SpellCheckJSon=HinKhoj.Hindi.Android.Common.AndroidHelper.ReadURLContent(seekUrl);  
 		MatchWordsData[] scd=GetMatchedWordsResultDataFromJson(SpellCheckJSon);
 		return new MatchedWordsResultData(scd);
 	}	    	

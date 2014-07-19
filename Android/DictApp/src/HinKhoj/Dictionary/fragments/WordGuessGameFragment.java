@@ -120,7 +120,6 @@ public class WordGuessGameFragment extends Fragment implements OnClickListener{
 
 	@Override 
 	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
-		Log.v("hinkhoj","Hangman..options menu create called.");
 		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(R.menu.guess_game, menu);
 	}

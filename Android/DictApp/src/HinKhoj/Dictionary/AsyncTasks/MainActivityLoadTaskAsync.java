@@ -35,7 +35,7 @@ public class MainActivityLoadTaskAsync extends AsyncTask<Void,Integer,Void> {
     	}
     	catch(Exception e)
     	{
-    		//Log.v("hinkhoj","unexpected exception");
+    		DictCommon.LogException(e);
     	}
     }
 	

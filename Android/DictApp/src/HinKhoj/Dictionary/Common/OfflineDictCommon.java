@@ -69,11 +69,8 @@ public class OfflineDictCommon {
 	{
 		if(Build.VERSION.SDK_INT >8)
 		{
-			//Log.v("hinkhoj","download manager supported");
 			return true;
 		}
-
-		//Log.v("hinkhoj","download manager not supported");
 	
 		return false;
 	}

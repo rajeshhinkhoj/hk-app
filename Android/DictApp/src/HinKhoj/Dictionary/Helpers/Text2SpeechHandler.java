@@ -47,16 +47,15 @@ TextToSpeech.OnInitListener {
 			if (result == TextToSpeech.LANG_MISSING_DATA
 					|| result == TextToSpeech.LANG_NOT_SUPPORTED) {
 				needTTSData=true;
-				Log.e("TTS", "This Language is not supported");
+				
 			} 
 			else
 			{
 				enabled=true;
 			}
 
-		} else {
-			Log.e("TTS", "Initilization Failed!");
 		}
+		
 
 	}
 
@@ -64,8 +63,8 @@ TextToSpeech.OnInitListener {
 	public void speakOut(String text) {
 		// TODO Auto-generated method stub
 		if(enabled)
-		{
-     		tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+		{		
+			tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 			Toast.makeText(context, "word "+text+" successfully spoken!!!", Toast.LENGTH_SHORT).show();
 		}
 		else

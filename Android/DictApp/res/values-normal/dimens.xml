@@ -37,5 +37,8 @@
     <dimen name="topimgMargin">5dp</dimen>
      <dimen name="search_bar_width">200dp</dimen>
     
-    
+     <dimen name="drawer_padding_top">35dp</dimen>
+      
+     <dimen name="drawer_width">300dp</dimen>
+      <dimen name="drawer_item_height">55dp</dimen>
 </resources>

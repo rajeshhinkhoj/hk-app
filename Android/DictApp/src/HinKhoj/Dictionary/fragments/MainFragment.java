@@ -352,7 +352,6 @@ public class MainFragment extends Fragment {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
-		//Log.v("hinkhoj","MainFragment: Got voice response result: "+resultCode+" request: "+requestCode);
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
@@ -374,8 +373,6 @@ public class MainFragment extends Fragment {
 			TextView wod_tv=(TextView)localView.findViewById(R.id.wod_display);
 			DictCommon.setHindiFont(view.getContext(), wod_tv);
 			wod_tv.setText(wod_display);
-			//Log.v("hinkhoj","Done loading word of day");
-
 		}
 		catch(Exception e)
 		{

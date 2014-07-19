@@ -1,6 +1,8 @@
 package HinKhoj.Dictionary.AsyncTasks;
 
 import java.net.UnknownHostException;
+
+import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.Common.SpellCheckCommon;
 import HinKhoj.Dictionary.DataModel.SpellCheckResultData;
 import HinKhoj.Dictionary.fragments.SpellCheckingFragment;
@@ -53,7 +55,7 @@ public class SpellCheckSearchTask extends AsyncTask<String,Long, SpellCheckResul
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","unexpected exception");
+			DictCommon.LogException(e);
 		}
 	}
 

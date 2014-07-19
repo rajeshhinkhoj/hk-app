@@ -98,7 +98,7 @@ public class PurchasePremiumActivity extends PurchaseActivity {
 				successMessage+="Please record below data for future communication: ";
 				successMessage+=("<br/><br/>Order Id: <b>"+info.getOrderId());	
 			}
-			Log.v("hinkhoj",successMessage);
+			
 			displaySuccessMessage(successMessage);
 			try {
 				Thread.sleep(1000);

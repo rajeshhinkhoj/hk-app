@@ -24,7 +24,7 @@ public class LoadGameAsyncTask extends AsyncTask<Void,Long,HangmanGameInfo>
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error getting hangman game");
+			
 			DictCommon.LogException(e);
 		}
 		return hgi;
@@ -46,7 +46,7 @@ public class LoadGameAsyncTask extends AsyncTask<Void,Long,HangmanGameInfo>
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","unexpected exception");
+			DictCommon.LogException(e);
 		}
 	}
 

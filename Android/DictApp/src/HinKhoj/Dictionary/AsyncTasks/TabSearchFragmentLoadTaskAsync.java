@@ -1,4 +1,5 @@
 package HinKhoj.Dictionary.AsyncTasks;
+import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.fragments.DictionarySearchFragment;
 import HinKhoj.Dictionary.fragments.TabResultFragment;
 import android.os.AsyncTask;
@@ -30,7 +31,7 @@ public class TabSearchFragmentLoadTaskAsync extends AsyncTask<Void,Integer,Void>
     	}
     	catch(Exception e)
     	{
-    		//Log.v("hinkhoj","unexpected exception");
+    		DictCommon.LogException(e);
     	}
     }
 	

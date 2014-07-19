@@ -48,7 +48,7 @@ public class OfflineDictSearchTask extends  AsyncTask<String,Long,DictResultData
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","unexpected exception");
+			DictCommon.LogException(e);
 		}
 	}
 

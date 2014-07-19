@@ -2,6 +2,7 @@ package HinKhoj.Dictionary.adapters;
 
 
 import HinKhoj.Dictionary.R;
+import android.R.dimen;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -88,14 +89,13 @@ public int getChildrenCount(int groupPosition) {
    public TextView getGenericView() {
       // Layout parameters for the ExpandableListView
       AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-               ViewGroup.LayoutParams.MATCH_PARENT, 64);
-
+               ViewGroup.LayoutParams.MATCH_PARENT, _context.getResources().getDimensionPixelSize(R.dimen.drawer_item_height));
       TextView textView = new TextView(_context);
       textView.setLayoutParams(lp);
       // Center the text vertically
       textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
       // Set the text starting position
-      textView.setPadding(36, 0, 0, 0);
+      textView.setPadding(_context.getResources().getDimensionPixelSize(R.dimen.drawer_padding_top), 0, 0, 0);
      // textView.setTextColor(Color.WHITE);
       textView.setTextSize(18.0f);
       return textView;

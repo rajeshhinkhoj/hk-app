@@ -30,7 +30,7 @@ public class WordDetailsFragmentLoadTaskAsync extends AsyncTask<Void,Integer,Voi
     	}
     	catch(Exception e)
     	{
-    		//Log.v("hinkhoj","unexpected exception");
+    		DictCommon.LogException(e);
     	}
     }
 	

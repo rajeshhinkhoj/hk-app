@@ -8,7 +8,6 @@ import android.content.Intent;
 public class NetworkReceiver extends BroadcastReceiver {
 	    @Override
 	    public void onReceive(Context context, Intent intent) {
-	    	 //Log.v("hinkhoj", "network changed..");
 	         if(!DictCommon.getNotification(context))
 	    	 {
 	    		 return;

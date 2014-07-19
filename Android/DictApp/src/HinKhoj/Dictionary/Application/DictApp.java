@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class DictApp extends Application {
 
     // The following line should be changed to include the correct property id.
-    private static final String PROPERTY_ID = "UA-892132-2";
+    private static final String PROPERTY_ID = "UA-892132-30";
 
     public static int GENERAL_TRACKER = 0;
 

@@ -1,8 +1,10 @@
 package HinKhoj.Dictionary.AsyncTasks;
 import com.google.android.gms.ads.AdView;
 
+import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.Constants.AppConstants;
 import android.os.AsyncTask;
+
 import com.google.android.gms.ads.AdRequest;
 
 public class AdRefreshTaskAsync extends AsyncTask<Void,Integer,Void> {
@@ -36,8 +38,7 @@ public class AdRefreshTaskAsync extends AsyncTask<Void,Integer,Void> {
     		
 		} 
     	catch (Exception e) {
-			// TODO Auto-generated catch block
-			//Log.v("hinkhoj","error while refrshing ad"+e.toString());
+			DictCommon.LogException(e);
 		}
     	return null;
     }

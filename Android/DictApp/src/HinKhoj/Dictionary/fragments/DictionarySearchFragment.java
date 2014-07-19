@@ -18,7 +18,6 @@ import HinKhoj.Dictionary.DataModel.DictResultData;
 import HinKhoj.Dictionary.DataModel.DictionaryWordData;
 import HinKhoj.Dictionary.UIData.StringIdRowItem;
 import HinKhoj.Dictionary.activity.WordDetailsActivity;
-import HinKhoj.Dictionary.activity.WordDetailsMobileActivity;
 import HinKhoj.Dictionary.adapters.MeaningListAdapter;
 import HinKhoj.Dictionary.ui.ExpandableHeightListView;
 import HinKhoj.Hindi.Android.Common.HindiCommon;
@@ -135,8 +134,6 @@ public class DictionarySearchFragment extends Fragment{
 		exactMeaningMap= new HashMap<String,List<StringIdRowItem>>();
 		nearbyMeaning= new ArrayList<StringIdRowItem>();
 		defMeaning= new ArrayList<StringIdRowItem>();
-		//Log.v("hinkhoj","IsOnline="+isOnline+" IsTablet="+isTablet);
-		//Log.v("hinkhoj","search word in dictsearchfragment is "+searchWord);
 	}
 
 
@@ -226,11 +223,15 @@ public class DictionarySearchFragment extends Fragment{
 
 			if(!isTablet)
 			{
+				/*
 				StringIdRowItem entry= (StringIdRowItem) parent.getAdapter().getItem(position);
 				Intent intent=new Intent(getActivity(),WordDetailsMobileActivity.class);
 				intent.putExtra("meaning_id", entry.getRId());
 				intent.putExtra("word", entry.getText());
 				startActivity(intent);
+				*/
+				StringIdRowItem entry= (StringIdRowItem) parent.getAdapter().getItem(position);
+				showWordDetails(entry);
 			}
 			else
 			{
@@ -309,7 +310,7 @@ public class DictionarySearchFragment extends Fragment{
 			nearbyMeaningMap.put("NEARBY", nearbyMeaning);
 			meaningMap.put("NEARBY", nearbyMeaningMap);
 			
-			if(nearbyMeaning.size()>0 && !detailShown)
+			if(isTablet && nearbyMeaning.size()>0 && !detailShown)
 			{
 				showWordDetails(nearbyMeaning.get(0));
 				detailShown=true;
@@ -322,7 +323,7 @@ public class DictionarySearchFragment extends Fragment{
 			defMeaningMap.put("DEF", defMeaning);
 			meaningMap.put("DEF", defMeaningMap);
 
-			if(defMeaning.size()>0 && !detailShown)
+			if(isTablet && defMeaning.size()>0 && !detailShown)
 			{
 				showWordDetails(defMeaning.get(0));
 				detailShown=true;
@@ -486,6 +487,8 @@ public class DictionarySearchFragment extends Fragment{
 
 	private static final String ARG_POSITION = "position";
 	public static final String IS_ONLINE = "isOnline";
+	public static final String MEANING_ID = "meaning_id";
+	public static final String MAIN_WORD = "main_word";
 
 	private int position;
 	private String resultMessage;
@@ -519,10 +522,5 @@ public class DictionarySearchFragment extends Fragment{
 		setSearchMessage(resultMessage);
 		this.resultMessage=resultMessage;
 	}
-
-	
-
-
-
 
 }

@@ -33,8 +33,6 @@ public class BGConfigureTaskAsync extends AsyncTask<Void,Integer,Void> {
 
     @Override
 	protected void onPostExecute(Void result) {
-    	//Log.v("hinkhoj","updating dict message");
-    	//Toast.makeText(context, "Offline Dictionary configured", Toast.LENGTH_LONG).show();
     	DictCommon.tryCloseOfflineDb();
         DictCommon.setupOfflineDb();
     }

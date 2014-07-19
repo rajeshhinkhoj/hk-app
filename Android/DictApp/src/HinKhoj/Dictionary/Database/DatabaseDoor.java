@@ -39,7 +39,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 			db.execSQL("CREATE TABLE meaningcache (word string PRIMARY KEY DESC,meaning TEXT,access_time datetime default CURRENT_TIMESTAMP,is_complete TINYINT);");
 			db.execSQL("CREATE TABLE savedword (word string PRIMARY KEY DESC,saved_time datetime default CURRENT_TIMESTAMP,isHindi TINYINT);");
 			db.execSQL("CREATE TABLE word_of_day (wod_date date PRIMARY KEY DESC,wod_data string)");
-			//Log.v("database", "before creation new ");
+			
 		}
 		catch(Exception e)
 		{
@@ -77,14 +77,13 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 			cv.put("word", word.toLowerCase());
 			cv.put("meaning", meaning);
 			cv.put("is_complete", isComplete);
-			//Log.v("hinkhoj", "saving word="+word);
 			db=getWritableDatabase();
 			db.insert("meaningcache", "save", cv);
 
 		}
 		catch(Exception e)
 		{
-			Log.v("hinkhoj","error while saving word meaning"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{
@@ -122,13 +121,12 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 			{
 				cv.put("IsHindi",0);
 			}
-			//Log.v("hinkhoj", "saving word="+word);
 			db=getWritableDatabase();
 			db.insert("savedword", "save", cv);
 		}
 		catch(Exception e)
 		{
-			Log.v("hinkhoj","error while saving word"+e.toString());
+			DictCommon.LogException(e);
 		}
 
 		finally
@@ -182,7 +180,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error executing query"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{
@@ -211,7 +209,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error executing query"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{
@@ -243,7 +241,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","search word related error"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{
@@ -276,7 +274,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","search word related error"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{
@@ -309,7 +307,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","saved word related error"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{
@@ -371,8 +369,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 	}
 	public String getWordOfDay(String wod_date) {
 		SQLiteDatabase db=null;
-		//Log.v("hinkhoj","SELECT wod_data FROM word_of_day where wod_date = '"+wod_date+"'");
-		
+			
 		String WordResultJSon=null;
 		try
 		{
@@ -388,7 +385,7 @@ public class DatabaseDoor extends SQLiteOpenHelper {
 		}
 		catch(Exception e)
 		{
-			//Log.v("hinkhoj","error getting wod from db"+e.toString());
+			DictCommon.LogException(e);
 		}
 		finally
 		{

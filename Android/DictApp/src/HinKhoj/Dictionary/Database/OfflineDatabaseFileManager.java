@@ -204,7 +204,7 @@ public class OfflineDatabaseFileManager {
 
 
 
-						Log.v("hinkhoj","old my db file exists at "+oldDBBackupPath);
+						
 						try
 						{
 							FileInputStream finMyOldDB=new FileInputStream(oldMydbFilePath);
@@ -222,12 +222,11 @@ public class OfflineDatabaseFileManager {
 
 							//delete old folder
 							cleanAllAppFiles(1);
-							Log.v("hinkhoj","old files moved successfully");
+							
 
 						}
 						catch(Exception e)
 						{
-							Log.v("hinkhoj","error copying files.");
 							DictCommon.LogException(e);
 						}
 
@@ -260,7 +259,7 @@ public class OfflineDatabaseFileManager {
 						String oldBKMydbFilePath=oldDBBackupPath+"/hkdictsettings.db";
 
 
-						Log.v("hinkhoj","old my db file exists at "+oldDBBackupPath);
+						
 						try
 						{
 							FileInputStream finMyOldDB=new FileInputStream(oldMydbFilePathv1);
@@ -276,12 +275,12 @@ public class OfflineDatabaseFileManager {
 							foutmyDB.close();
 							finMyOldDB.close();
 
-							Log.v("hinkhoj","old files moved successfully");
+							
 
 						}
 						catch(Exception e)
 						{
-							Log.v("hinkhoj","error copying files.");
+						
 							DictCommon.LogException(e);
 						}
 
@@ -289,7 +288,7 @@ public class OfflineDatabaseFileManager {
 					else if(!newDBPath.equalsIgnoreCase(oldDBPathv2) && oldMyFilev2.exists())
 					{
 
-                        Log.v("hinkhoj","Moving files from v2 to v3");
+                        
 						String oldBKMydbFilePath=oldDBPathv2+"/hkdictsettings-bkup.db";
 
 						try
@@ -310,12 +309,12 @@ public class OfflineDatabaseFileManager {
 							foutmyDB.close();
 							finMyOldDB.close();
 
-							Log.v("hinkhoj","v2: old files moved successfully");
+						
 
 						}
 						catch(Exception e)
 						{
-							Log.v("hinkhoj","v2 upgrade: error copying files.");
+							
 							DictCommon.LogException(e);
 						}
 					}

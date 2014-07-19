@@ -23,7 +23,6 @@ public class WODService extends Service
 	public int onStartCommand(Intent intent, int flags, int startId) 
 	{
 		new_wod_found=false;
-		//Log.v(DEBUG_TAG, "Execute service method ");
 		Context context = WODService.this.getApplicationContext();
 		try
 		{
@@ -49,13 +48,11 @@ public class WODService extends Service
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		//Log.v(DEBUG_TAG, "WOD service on bind");
 		return null;
 	}
 	@Override   
 	public void onCreate() {
 		//code to execute when the service is first created
-		//Log.v(DEBUG_TAG, "WOD service on create");
 
 	}   
 	@Override   
@@ -92,7 +89,6 @@ public class WODService extends Service
 						int incr;
 						notificationManager.notify(0, mBuilder.build());
 						try {
-							Log.d("hinkhoj", "updating word of day...");
 							wodDownloader = new FetchWOD();
 							wodDownloader.asyncFetch();
 
@@ -125,7 +121,7 @@ public class WODService extends Service
 	{
 		Context context=null;
 		public FetchWOD() {
-			//Log.v(DEBUG_TAG, "calling constr!");
+			
 		}
 		public void execute(Context context) {
 			// TODO Auto-generated method stub
@@ -149,7 +145,7 @@ public class WODService extends Service
 			}
 			catch(Exception e)
 			{
-				//Log.v("hinkhoj","error finding word of day");
+				DictCommon.LogException(e);
 			}
 
 		}

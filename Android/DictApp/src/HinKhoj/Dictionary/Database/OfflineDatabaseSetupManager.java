@@ -33,7 +33,7 @@ public class OfflineDatabaseSetupManager {
 				if(!hkDictPath.mkdirs())
 				{
 
-					Log.v("hinkhoj","Not able to create "+hkDictPath.getAbsolutePath());
+					
 					if(progressManager!=null)
 					{
 						progressManager.setProgress(progressManager.getMax());
@@ -43,17 +43,17 @@ public class OfflineDatabaseSetupManager {
 				}		
 			}
 
-			Log.v("hinkhoj","Directory successfully created.."+hkDictPath.getAbsolutePath());
-			Log.v("copy","Start copy assets..");
+		//	Log.v("hinkhoj","Directory successfully created.."+hkDictPath.getAbsolutePath());
+			//Log.v("copy","Start copy assets..");
 			OfflineDatabaseSetupManager.CopyAssetsDictDb(context);
-			Log.v("copy","End copy assets..");
+			//Log.v("copy","End copy assets..");
 			String unzipPath=OfflineDatabaseFileManager.GetSqlLiteDatabaseFolderPath();
 			File unzipPathDir= new File(unzipPath);
 			if(!unzipPathDir.exists())
 			{
 				if(!unzipPathDir.mkdirs())
 				{
-					Log.v("hinkhoj","not able to create "+unzipPath);
+					//Log.v("hinkhoj","not able to create "+unzipPath);
 				}
 			}
 			//uncompress
@@ -89,13 +89,12 @@ public class OfflineDatabaseSetupManager {
 				if(!hkDictPath.mkdirs())
 				{
 
-					Log.v("hinkhoj","Not able to create "+hkDictPath.getAbsolutePath());
+					//Log.v("hinkhoj","Not able to create "+hkDictPath.getAbsolutePath());
 					return;		
 
 				}		
 			}
 
-			Log.v("hinkhoj","Directory successfully created.."+hkDictPath.getAbsolutePath());
 			//		Log.v("copy","Start copy assets..");
 			OfflineDatabaseSetupManager.CopyAssets(context);
 			//		Log.v("copy","End copy assets..");
@@ -105,7 +104,7 @@ public class OfflineDatabaseSetupManager {
 			{
 				if(!unzipPathDir.mkdirs())
 				{
-					Log.v("hinkhoj","not able to create "+unzipPath);
+					//Log.v("hinkhoj","not able to create "+unzipPath);
 				}
 			}
 			//uncompress
@@ -115,7 +114,7 @@ public class OfflineDatabaseSetupManager {
 		}
 		catch(Exception e)
 		{
-			Log.v("hinkhoj","error while uncompressing hangman"+e.toString());
+			DictCommon.LogException(e);
 		}
 
 	}
@@ -132,7 +131,6 @@ public class OfflineDatabaseSetupManager {
 		{
 			return false;
 		}
-		Log.v("hinkhoj","dictionary is uncompressed");
 		//check if dict uncompress success file present
 		return true;
 	}
@@ -153,7 +151,7 @@ public class OfflineDatabaseSetupManager {
 			out.close();
 			out = null;
 		} catch(Exception e) {
-			Log.e("tag", e.getMessage());
+			DictCommon.LogException(e);
 		}       
 	}
 
@@ -173,7 +171,7 @@ public class OfflineDatabaseSetupManager {
 			out.close();
 			out = null;
 		} catch(Exception e) {
-			Log.e("tag", e.getMessage());
+			DictCommon.LogException(e);
 		}       
 	}
 
@@ -197,7 +195,7 @@ public class OfflineDatabaseSetupManager {
 		}
 		catch(Exception e)
 		{
-			Log.v("hinkhoj","Error deleting file. "+e.getMessage());
+			DictCommon.LogException(e);
 		}
 
 		try
@@ -207,7 +205,7 @@ public class OfflineDatabaseSetupManager {
 		}
 		catch(Exception e)
 		{
-			Log.v("hinkhoj","Error deleting file. "+e.getMessage());
+			DictCommon.LogException(e);
 		}
 		
 		try
@@ -217,7 +215,7 @@ public class OfflineDatabaseSetupManager {
 		}
 		catch(Exception e)
 		{
-			Log.v("hinkhoj","Error deleting file. "+e.getMessage());
+			DictCommon.LogException(e);
 		}
 
 		
@@ -263,7 +261,6 @@ public class OfflineDatabaseSetupManager {
 			double sdAvailSize = (double)stat.getAvailableBlocks() * (double)stat.getBlockSize(); 
 			spaceinMB=(int)sdAvailSize/(1024*1024);
 		}
-		Log.v("hinkhoj", "space in MB is "+spaceinMB);
 		
 		if(spaceinMB >35)
 		{
@@ -295,7 +292,6 @@ public class OfflineDatabaseSetupManager {
 			double sdAvailSize = (double)stat.getBlockCount() * (double)stat.getBlockSize(); 
 			spaceinMB=(int)sdAvailSize/(1024*1024);
 		}
-		Log.v("hinkhoj","internal memory space is:"+spaceinMB);
 		return spaceinMB;
 	
 	}
@@ -311,7 +307,7 @@ public class OfflineDatabaseSetupManager {
 			double sdAvailSize = (double)stat.getAvailableBlocks() * (double)stat.getBlockSize(); 
 			spaceinMB=(int)sdAvailSize/(1024*1024);
 		}
-		Log.v("hinkhoj","free :internal memory space is:"+spaceinMB);
+
 		return spaceinMB;
 	}
 	public static int getTotalSDCardSize() {
@@ -326,7 +322,6 @@ public class OfflineDatabaseSetupManager {
 			double sdAvailSize = (double)stat.getBlockCount() * (double)stat.getBlockSize(); 
 			spaceinMB=(int)sdAvailSize/(1024*1024);
 		}
-		Log.v("hinkhoj","total :sd card memory space is:"+spaceinMB);
 		return spaceinMB;
 		
 	}

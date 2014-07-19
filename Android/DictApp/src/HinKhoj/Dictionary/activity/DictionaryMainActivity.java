@@ -20,6 +20,7 @@ import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.Common.HinKhojLogger;
 import HinKhoj.Dictionary.Common.UICommon;
 import HinKhoj.Dictionary.Helpers.AdvanceHindiTextWatcher;
+import HinKhoj.Dictionary.Helpers.Text2SpeechHandler;
 import HinKhoj.Dictionary.Listeners.FindMeaningEditorHelper;
 import HinKhoj.Dictionary.Marketing.AppRater;
 import HinKhoj.Dictionary.Receiver.WODAlarmService;
@@ -90,6 +91,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 	private HindiEditText SearchET=null;
 	private HindiKBHelper hkb=null;
 	private boolean isOnline=true;
+	private Text2SpeechHandler t2sHandler=null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -225,7 +227,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 			searchWord=DictCommon.ExtractSearchWord(searchWord);
 			if(searchWord!=null)
 			{
-				SearchET.setText(searchWord);
+				setSearchText(searchWord);
 				LaunchMeaning(searchWord, false);
 			}
 			return;
@@ -267,11 +269,21 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		switch (item.getItemId()) {
 
 		case android.R.id.home: 
-			if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
-				mDrawerLayout.closeDrawer(mDrawerList);
-			} else {
-				mDrawerLayout.openDrawer(mDrawerList);
-			}
+			if(mDrawerToggle!=null)
+	        {
+				if(!mDrawerToggle.isDrawerIndicatorEnabled())
+				{
+					this.onBackPressed();
+				}
+				else
+				{
+					if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+						mDrawerLayout.closeDrawer(mDrawerList);
+					} else {
+						mDrawerLayout.openDrawer(mDrawerList);
+					}
+				}
+	        }
 			break;
 		case R.id.search_menu:
 
@@ -324,7 +336,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 						else
 						{
 							new LaunchExternalDictSearchTask(DictionaryMainActivity.this).execute(new String[]{word});
-							SearchET.clearFocus();
+							//SearchET.clearFocus();
 							UICommon.HideInputKeyBoard(SearchET, SearchET.getContext());
 						}
 					}		
@@ -606,7 +618,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		setFragmentPosition(CommonBaseActivity.MEANING_TAB);
 		if(SearchET!=null)
 		{
-			SearchET.clearFocus();
+			//SearchET.clearFocus();
 			UICommon.HideInputKeyBoard(SearchET, this);
 		}
 		DictCommon.dictResultData=null;
@@ -644,8 +656,12 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 			{
 				if(SearchET!=null)
 				{
-					SearchET.setText("");
+					setSearchText("");
 				}
+		        if(mDrawerToggle!=null)
+		        {
+		        	mDrawerToggle.setDrawerIndicatorEnabled(true);
+		        }
 			}
 			/*
 			if(getFragmentPosition()==0)
@@ -669,13 +685,18 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 	}
 
+	
+
+
+
+
 	@Override
 	public void onWordSelected(int position, String word) {
 
 		setFragmentPosition(HINDI_ENGLISH_DICTIONARY);
 		setTabPosition(OFFLINE_DICTIONARY);
 		setHomeTitle(getResources().getString(R.string.hindi_english_dictionary));
-		SearchET.setText(word);
+		setSearchText(word);
 		LaunchMeaning(word, false);	
 	}
 	@Override
@@ -683,7 +704,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		setFragmentPosition(HINDI_ENGLISH_DICTIONARY);
 		setTabPosition(OFFLINE_DICTIONARY);
 		setHomeTitle(getResources().getString(R.string.hindi_english_dictionary));
-		SearchET.setText(word);
+		setSearchText(word);
 		LaunchMeaning(word, false);	  
 
 	}
@@ -706,7 +727,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 				String word=matches.get(0);
 				if(word!=null && word!="")
 				{
-					SearchET.setText(word);
+					setSearchText(word);
 					setFragmentPosition(HINDI_ENGLISH_DICTIONARY);
 					setTabPosition(ONLINE_DICTIONARY);
 					LaunchMeaning(word, true);
@@ -724,7 +745,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 				String word=matches.get(0);
 				if(word!=null && word!="")
 				{
-					SearchET.setText(word);
+					setSearchText(word);
 					setFragmentPosition(HINDI_ENGLISH_DICTIONARY);
 					setTabPosition(OFFLINE_DICTIONARY);
 					LaunchMeaning(word, false);
@@ -734,8 +755,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 		try
 		{
-			//Log.v("hinkhoj","MainActivity: Got voice response result: "+resultCode+" request: "+requestCode);
-			super.onActivityResult(requestCode, resultCode, data);
+				super.onActivityResult(requestCode, resultCode, data);
 		}
 		catch(Exception e)
 		{
@@ -756,7 +776,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 				return;
 			}
 
-			Log.d("hinkhoj", "Query inventory was successful.");
+			
 
 			/*
 			 * Check for items we own. Notice that for each purchase, we check
@@ -1009,6 +1029,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 		try
 		{
+			this.t2sHandler= new Text2SpeechHandler(this);
 			getWindow().setSoftInputMode(
 					WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 			InitializeAlarm();
@@ -1035,8 +1056,18 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 
 	@Override
 	public void onDestroy() {
-		disposeBillingHelper();
+		try
+		{
+			disposeBillingHelper();
+			if(this.t2sHandler!=null)
+			{
+				this.t2sHandler.onDestroy();
+			}
+		}
+		finally
+		{	
 		super.onDestroy();
+		}
 	}
 
 	private void disposeBillingHelper() {
@@ -1068,13 +1099,16 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 	}
 
 	@Override
-	public void onWordClick(int meaing_id, String word) {
-		// TODO Auto-generated method stub
-
+	public void onWordClick(int meaning_id, String word) {
+		mDrawerToggle.setDrawerIndicatorEnabled(false);
+		showWordDetailsMobile(meaning_id,word);
 	}
 	@Override
 	public void onWordSpeak(String word) {
-		// TODO Auto-generated method stub
+		if(t2sHandler!=null)
+		{
+			t2sHandler.speakOut(word);
+		}
 
 	}
 
@@ -1083,7 +1117,7 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 		if(this.hkb!=null)
 		{
 			this.hkb.HideHelp();
-			this.SearchET.clearFocus();
+			//this.SearchET.clearFocus();
 			UICommon.HideInputKeyBoard(SearchET, this);
 		}
 	}
@@ -1091,6 +1125,19 @@ public class DictionaryMainActivity extends CommonBaseActivity implements OnPage
 	public boolean getIsOnline() {
 		// TODO Auto-generated method stub
 		return isOnline;
+	}
+	
+	private void setSearchText(String inpt) {
+		// TODO Auto-generated method stub
+		if(this.SearchET!=null)
+		{
+			this.SearchET.setFocusable(false);
+			this.SearchET.setFocusableInTouchMode(false);
+			this.SearchET.setText(inpt);
+			
+			this.SearchET.setFocusable(true);
+			this.SearchET.setFocusableInTouchMode(true);			
+		}
 	}
 
 }

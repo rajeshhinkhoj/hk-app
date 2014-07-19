@@ -4,10 +4,12 @@ import HinKhoj.Dictionary.R;
 import HinKhoj.Dictionary.Common.AppAccountManager;
 import HinKhoj.Dictionary.Common.DictCommon;
 import HinKhoj.Dictionary.fragments.AppSetupFragment;
+import HinKhoj.Dictionary.fragments.DictionarySearchFragment;
 import HinKhoj.Dictionary.fragments.DictionaryToolsFragment;
 import HinKhoj.Dictionary.fragments.HindiEnglishDictionaryFragment;
 import HinKhoj.Dictionary.fragments.MyDictionaryFragment;
 import HinKhoj.Dictionary.fragments.PremiumAccountFragment;
+import HinKhoj.Dictionary.fragments.WordDetailsMobileFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -119,7 +121,10 @@ public class CommonBaseActivity extends ActionBarActivity{
    private void removeAllFragments() {
 	     try
 	     {
-	    	 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+	    	 if(getSupportFragmentManager().getBackStackEntryCount()>0)
+	    	 {
+	    		 getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryAt(0).getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+	    	 }
 	     }
 	     catch(Exception e)
 	     {
@@ -194,8 +199,20 @@ public class CommonBaseActivity extends ActionBarActivity{
          .replace(R.id.content,
                   fragment,
                   fragmentName).addToBackStack(fragmentName).commit();
+         hideKeyboard();
       } catch (Exception e) {
 
       }
+   }
+   
+   
+   public void showWordDetailsMobile(int meaning_id,String word)
+   {
+	   Bundle bundle=new Bundle();
+	   bundle.putInt("selectedTab", 0);
+	   bundle.putInt(DictionarySearchFragment.MEANING_ID, meaning_id);
+	   bundle.putString(DictionarySearchFragment.MAIN_WORD, word);
+	   WordDetailsMobileFragment wdFrag= WordDetailsMobileFragment.newInstance(new Object[]{meaning_id,word}) ; 
+       replaceFragment(wdFrag,wdFrag.getClass().getSimpleName());
    }
 }
